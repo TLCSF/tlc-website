@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --font-sans: "adelle-sans", "Adelle Sans", "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "cormorant-garamond", "Cormorant Garamond", Cormorant, Garamond, Georgia, "Times New Roman", serif;
+  --color-black: #000000;
+  --color-gold: #a5722b;
+  --color-creme: #f5eccf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-creme);
+  color: var(--color-black);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+a {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+}
+
+h2,
+h3,
+h4,
+button,
+.font-ui {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes homeHeroFade {
+  0%, 13% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  16.66%, 96.66% {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.home-hero-slide {
+  animation: homeHeroFade 30s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-slide {
+    animation: none;
+  }
+
+  .home-hero-slide:not(:first-child) {
+    opacity: 0;
+  }
+}
+
+.prose-tlc {
+  color: #2d3833;
+  line-height: 1.75;
+}
+
+.prose-tlc h2 {
+  color: #000000;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  line-height: 1.12;
+  margin-top: 2rem;
+}
+
+.prose-tlc h3 {
+  color: #18231f;
+  font-size: 1.18rem;
+  margin-top: 1.6rem;
+}
