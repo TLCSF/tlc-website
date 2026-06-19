@@ -136,7 +136,7 @@ function MenuProductCard({ product }: { product: CmsMenuProduct }) {
   return (
     <article className="overflow-hidden rounded-lg border border-ink/10 bg-paper shadow-sm">
       {product.imageUrl ? (
-        <div className="relative aspect-[4/3] bg-linen">
+        <div className="relative aspect-square bg-linen">
           <Image
             src={product.imageUrl}
             alt={product.imageAlt || product.title}
