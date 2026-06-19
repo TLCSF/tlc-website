@@ -15,9 +15,8 @@ export default async function AccountPage() {
 
   return (
     <MemberShell title="Account Status" allowPending>
-      <section className="grid gap-4 rounded-lg bg-paper p-6 shadow-sm md:grid-cols-3">
+      <section className="grid gap-4 rounded-lg bg-paper p-6 shadow-sm md:grid-cols-2">
         <Status label="Membership role" value={profile?.role || "Not connected"} />
-        <Status label="Approval" value={profile?.approval || "Pending setup"} />
         <Status label="Waiver" value={profile?.waiver || "Not started"} />
       </section>
       {profile ? (
@@ -25,11 +24,11 @@ export default async function AccountPage() {
           <p>
             Signed in as <span className="font-semibold text-ink">{profile.email}</span>
           </p>
-          <p className="mt-1 font-mono text-xs">Profile id: {profile.id}</p>
           {!active ? (
             <p className="mt-3">
-              If you already approved this member in Supabase, confirm the row
-              you edited has this exact profile id.
+              If you believe your membership should already be active, please
+              contact TLC so staff can help confirm your registration, waiver,
+              and membership status.
             </p>
           ) : null}
         </section>
@@ -39,7 +38,7 @@ export default async function AccountPage() {
         <p className="mt-3 leading-7 text-ink/70">
           {active
             ? "Your account is active. Member-only pages are available from the navigation above."
-            : "Complete Smartwaiver and await staff approval. Active access requires authentication, completed waiver, approved status, and active member role."}
+            : "Complete the digital waiver using the same email address as your TLC account. Member access becomes available after your registration and waiver are connected."}
         </p>
         {process.env.NEXT_PUBLIC_SMARTWAIVER_URL ? (
           <a

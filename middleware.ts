@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
 const protectedRoutes = [
-  "/menu",
   "/account",
   "/member-resources",
   "/member-community"
@@ -29,13 +28,6 @@ export async function middleware(request: NextRequest) {
     .some((cookie) => cookie.name.startsWith("sb-"));
 
   if (!hasAuthCookie) {
-    if (request.nextUrl.pathname.startsWith("/menu")) {
-      const membershipUrl = request.nextUrl.clone();
-      membershipUrl.pathname = "/membership";
-      membershipUrl.search = "";
-      return NextResponse.redirect(membershipUrl);
-    }
-
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = "/login";
     loginUrl.searchParams.set("next", request.nextUrl.pathname);

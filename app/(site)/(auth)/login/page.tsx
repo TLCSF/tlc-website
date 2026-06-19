@@ -38,7 +38,7 @@ export default async function LoginPage({
         </h1>
         <p className="mt-4 leading-7 text-ink/75">
           Access account status, member resources, and member-only community
-          areas after approval.
+          areas after your membership is active.
         </p>
         <form
           action="/auth/login"
@@ -61,8 +61,8 @@ export default async function LoginPage({
             >
               <p>{params.error}</p>
               {params.code ? (
-                <p className="mt-2 font-mono text-xs text-ink/65">
-                  Debug code: {params.code}
+                <p className="mt-2 text-xs text-ink/65">
+                  Reference code: {params.code}
                 </p>
               ) : null}
             </div>
@@ -76,8 +76,8 @@ export default async function LoginPage({
                 Login was accepted, but this browser did not send a session
                 cookie to the account page.
               </p>
-              <p className="mt-2 font-mono text-xs text-ink/65">
-                Debug code: login_cookie_missing
+              <p className="mt-2 text-xs text-ink/65">
+                Reference code: login_cookie_missing
               </p>
             </div>
           ) : null}

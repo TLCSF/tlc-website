@@ -9,8 +9,10 @@ export const siteConfig = {
     { href: "/education", label: "Education" },
     { href: "/membership", label: "Membership" },
     { href: "/community", label: "Community" },
+    { href: "/blog", label: "Blog" },
     { href: "/events", label: "Events" },
-    { href: "/faq", label: "FAQ" }
+    { href: "/faq", label: "FAQ" },
+    { href: "/contact", label: "Contact" }
   ],
   memberNav: [
     { href: "/menu", label: "Menu" },
@@ -27,6 +29,8 @@ export const siteConfig = {
       "A San Francisco-based entheogenic church and spiritual community focused on education, connection, and sacred mushroom traditions.",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "1081 Post St.",
+      postalCode: "94109",
       addressLocality: "San Francisco",
       addressRegion: "CA",
       addressCountry: "US"

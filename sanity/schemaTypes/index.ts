@@ -1,4 +1,5 @@
 import { announcement } from "./announcement";
+import { blogPost } from "./blogPost";
 import { blockContent } from "./blockContent";
 import { dosageGuideEntry } from "./dosageGuideEntry";
 import { educationArticle } from "./educationArticle";
@@ -12,6 +13,7 @@ export const schemaTypes = [
   blockContent,
   siteSettings,
   page,
+  blogPost,
   educationArticle,
   dosageGuideEntry,
   menuProduct,

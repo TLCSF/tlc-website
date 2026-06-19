@@ -7,7 +7,7 @@ Modern Next.js website for The Living Church, replacing WordPress with a Vercel-
 - Next.js App Router, TypeScript, Tailwind CSS
 - Sanity Studio at `/studio`
 - Supabase Auth and member profile data
-- Smartwaiver link/webhook placeholder
+- Smartwaiver link and webhook-based membership activation
 - Vercel hosting
 
 ## Local Setup
@@ -64,16 +64,15 @@ Gated pages require:
 
 ## Smartwaiver
 
-Launch approach:
+Current membership flow:
 
 1. Set `NEXT_PUBLIC_SMARTWAIVER_URL` to the live waiver URL.
-2. Staff manually verifies completion and updates Supabase.
+2. Add Smartwaiver webhook credentials in production.
+3. Configure Smartwaiver to send completed waiver events to `/api/smartwaiver/webhook`.
+4. The webhook matches the signer email to `profiles.email`.
+5. Matched profiles are marked `member_active`, `approved`, and `completed`.
 
-Automated approach:
-
-1. Add Smartwaiver webhook credentials.
-2. Connect `/api/smartwaiver/webhook` to service-role Supabase updates.
-3. Match waiver email to `profiles.email`.
+Members should use the same email address for their TLC account and waiver.
 
 ## Vercel Deployment
 
@@ -90,7 +89,7 @@ Automated approach:
 - Phase 1 complete: scaffold, design system, layout, navigation, footer, age gate.
 - Phase 2 complete: public pages, education pages, Sanity schemas, CMS fetch helpers.
 - Phase 3 complete: Supabase auth forms, account status, protected member routes.
-- Phase 4 complete: events, announcements/menu schemas, member menu, staff member search, Smartwaiver webhook placeholder.
+- Phase 4 complete: events, announcements/menu schemas, member menu, staff member search, Smartwaiver link and membership activation webhook.
 - Phase 5 complete: metadata, sitemap, robots, schema markup, accessibility-minded components, setup docs.
 
 ## Notes

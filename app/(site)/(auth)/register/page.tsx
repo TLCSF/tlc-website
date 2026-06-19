@@ -22,8 +22,8 @@ export default async function RegisterPage({
           Create Your Account
         </h1>
         <p className="mt-4 leading-7 text-ink/75">
-          Start membership registration. Waiver completion and staff approval
-          are required before member-only pages unlock.
+          Start membership registration. Waiver completion is required before
+          member-only pages unlock.
         </p>
         <form action={register} className="mt-8 grid gap-4 rounded-lg bg-paper p-6">
           {params.error ? (

@@ -11,7 +11,19 @@ export const faq = defineType({
       name: "category",
       title: "Category",
       type: "string",
-      options: { list: ["Membership", "Legal", "Education", "Sacraments", "Community", "Practical"] }
+      options: {
+        list: [
+          "Membership",
+          "Legal",
+          "Sacraments",
+          "Dosage",
+          "Set & Setting",
+          "Integration",
+          "Community",
+          "Store Access",
+          "Login & Technical Help"
+        ]
+      }
     }),
     defineField({ name: "sortOrder", title: "Sort order", type: "number", initialValue: 0 }),
     defineField({ name: "published", title: "Published", type: "boolean", initialValue: true })

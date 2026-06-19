@@ -12,12 +12,37 @@ export const metadata: Metadata = {
 };
 
 export default function EducationPage() {
+  const educationPath = [
+    {
+      title: "Understand the basics",
+      body:
+        "Start with plain-language context on dosage ranges, set and setting, integration, traditions, and what an entheogenic church is."
+    },
+    {
+      title: "Prepare for conversations",
+      body:
+        "The articles give members shared vocabulary for orientation, events, and personal preparation."
+    },
+    {
+      title: "Return after experience",
+      body:
+        "Integration resources help members notice what needs attention afterward and bring better questions back to the community."
+    }
+  ];
+
+  const principles = [
+    "Educational, not prescriptive",
+    "Respectful of tradition and context",
+    "Designed for adults 21+",
+    "Supportive of a clear membership pathway"
+  ];
+
   return (
     <main>
       <Hero
         eyebrow="Education Hub"
-        title="A resource for learning and exploration."
-        body="Whether you're new to sacred mushrooms or looking to deepen your understanding, the Education Hub provides resources designed to support informed and intentional participation."
+        title="A practical starting point for informed participation."
+        body="The Education Hub helps adults understand TLC's language, expectations, and sacramental context before they move deeper into membership."
         imageSrc="/images/tlc/dosage-candles.jpg"
         imageAlt="Candles and educational materials inside The Living Church chapel"
         imageMode="cover"
@@ -28,8 +53,18 @@ export default function EducationPage() {
           alt="Chapel seating inside The Living Church"
           eyebrow="Grounded learning"
           title="Education comes before participation."
-          body="The education pathway is designed to help adults slow down, ask better questions, and prepare with care before engaging more deeply."
+          body="TLC's resources are meant to slow the process down. Members are encouraged to read, ask questions, complete required steps, and understand the setting before engaging more deeply."
         />
+      </Section>
+      <Section eyebrow="How education supports members" title="A path from curiosity to readiness.">
+        <div className="grid gap-4 md:grid-cols-3">
+          {educationPath.map((item) => (
+            <article key={item.title} className="rounded-lg border border-ink/10 bg-paper p-6">
+              <h2 className="font-ui text-2xl font-semibold">{item.title}</h2>
+              <p className="mt-3 leading-7 text-ink/70">{item.body}</p>
+            </article>
+          ))}
+        </div>
       </Section>
       <Section eyebrow="Featured topics" title="Learn before you leap.">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -41,6 +76,25 @@ export default function EducationPage() {
               href={`/education/${article.slug}`}
             />
           ))}
+        </div>
+      </Section>
+      <Section eyebrow="Positioning" title="What these resources are, and are not." tone="linen">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <p className="text-lg leading-8 text-ink/75">
+            TLC education is not medical advice, legal advice, or a promise of
+            a particular experience. It is a shared foundation for adults who
+            want to approach membership with more care, context, and humility.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {principles.map((principle) => (
+              <div
+                key={principle}
+                className="rounded-lg border border-ink/10 bg-paper p-4 font-semibold"
+              >
+                {principle}
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
     </main>

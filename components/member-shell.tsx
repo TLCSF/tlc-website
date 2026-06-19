@@ -30,7 +30,7 @@ export async function MemberShell({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cedar">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">
               Member area
             </p>
             <h1 className="mt-2 font-serif text-4xl leading-tight sm:text-5xl">

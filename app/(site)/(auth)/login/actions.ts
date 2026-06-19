@@ -49,8 +49,8 @@ function mapLoginError(error: unknown): LoginError {
 
   if (normalized.includes("supabase is not configured")) {
     return {
-      code: "login_supabase_config",
-      message: "Login is not configured yet. Check the Supabase environment variables."
+      code: "login_service_unavailable",
+      message: "Login is temporarily unavailable. Please contact TLC for help."
     };
   }
 
@@ -61,7 +61,7 @@ function mapLoginError(error: unknown): LoginError {
   ) {
     return {
       code: "login_auth_network",
-      message: "Unable to reach Supabase Auth. Please try again in a moment."
+      message: "Unable to complete login right now. Please try again in a moment."
     };
   }
 

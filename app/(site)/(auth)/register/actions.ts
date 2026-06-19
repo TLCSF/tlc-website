@@ -8,9 +8,27 @@ function redirectWithError(message: string): never {
 }
 
 function getErrorMessage(error: unknown) {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "Registration failed. Please check the Supabase Auth settings and try again.";
+  const message =
+    error instanceof Error
+      ? error.message
+      : typeof error === "string"
+        ? error
+        : "";
+  const normalized = message.toLowerCase();
+
+  if (
+    normalized.includes("fetch failed") ||
+    normalized.includes("load failed") ||
+    normalized.includes("network")
+  ) {
+    return "Unable to complete registration right now. Please try again in a moment.";
+  }
+
+  if (normalized.includes("already registered") || normalized.includes("already exists")) {
+    return "An account may already exist for this email. Try logging in or contact TLC for help.";
+  }
+
+  return "Registration failed. Please check your details and try again.";
 }
 
 export async function register(formData: FormData) {
@@ -41,7 +59,7 @@ export async function register(formData: FormData) {
     });
 
     if (error) {
-      destination = `/register?error=${encodeURIComponent(error.message)}`;
+      destination = `/register?error=${encodeURIComponent(getErrorMessage(error))}`;
     }
   } catch (error) {
     destination = `/register?error=${encodeURIComponent(getErrorMessage(error))}`;

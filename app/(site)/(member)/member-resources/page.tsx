@@ -14,8 +14,8 @@ export default function MemberResourcesPage() {
       <div className="rounded-lg bg-paper p-6">
         <h2 className="font-serif text-2xl">Preparation and Integration</h2>
         <p className="mt-3 leading-7 text-ink/70">
-          This area is ready for Sanity-managed member resources, preparation
-          notes, integration materials, and community guidance.
+          Member resources, preparation notes, integration materials, and
+          community guidance will be shared here for active members.
         </p>
       </div>
     </MemberShell>

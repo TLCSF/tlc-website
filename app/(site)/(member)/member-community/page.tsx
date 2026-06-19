@@ -15,7 +15,7 @@ export default function MemberCommunityPage() {
         <h2 className="font-serif text-2xl">Community Life</h2>
         <p className="mt-3 leading-7 text-ink/70">
           Member-only announcements, circles, services, and participation
-          details can be published here through Sanity.
+          details will be shared here as they are announced.
         </p>
       </div>
     </MemberShell>

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { educationArticles } from "@/lib/content";
+import { blogPosts, educationArticles } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,8 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/membership",
     "/education",
     "/community",
+    "/blog",
     "/events",
     "/faq",
+    "/contact",
     "/join",
     "/register",
     "/login"
@@ -28,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: article.slug === "dosage-guide" ? 0.95 : 0.75
+    })),
+    ...blogPosts.map((post) => ({
+      url: `${siteConfig.url}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.7
     }))
   ];
 }

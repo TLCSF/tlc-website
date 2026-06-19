@@ -33,7 +33,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
-              href={item.href === "/menu" && !isLoggedIn ? "/membership" : item.href}
+              href={item.href}
               className="font-ui text-sm font-semibold text-creme/85 transition hover:text-creme"
             >
               {item.label}
@@ -72,7 +72,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
             {[...siteConfig.nav, ...authLinks].map((item) => (
               <Link
                 key={item.href}
-                href={item.href === "/menu" && !isLoggedIn ? "/membership" : item.href}
+                href={item.href}
                 className="rounded-md px-2 py-3 font-semibold text-creme"
                 onClick={() => setOpen(false)}
               >
