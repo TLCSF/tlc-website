@@ -27,6 +27,31 @@ body {
   font-weight: 400;
 }
 
+body.mobile-nav-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.mobile-nav-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  touch-action: pan-y;
+}
+
 ::selection {
   background: var(--color-gold);
   color: var(--color-black);

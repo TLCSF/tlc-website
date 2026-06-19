@@ -3,7 +3,7 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site";
 
 export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
@@ -13,11 +13,19 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
     ? [{ href: "/account", label: "Account" }]
     : [{ href: "/login", label: "Login" }];
 
+  useEffect(() => {
+    document.body.classList.toggle("mobile-nav-open", open);
+
+    return () => {
+      document.body.classList.remove("mobile-nav-open");
+    };
+  }, [open]);
+
   return (
     <header
       className={`border-b border-creme/10 bg-black text-creme ${
         open
-          ? "fixed inset-0 z-50 flex h-[100dvh] flex-col overflow-hidden lg:sticky lg:top-0 lg:h-auto lg:overflow-visible"
+          ? "mobile-nav-drawer z-50 lg:sticky lg:top-0 lg:h-auto lg:overflow-visible"
           : "sticky top-0 z-40"
       }`}
     >
@@ -61,7 +69,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
       </div>
       {open ? (
         <nav
-          className="min-h-0 flex-1 overflow-y-auto overscroll-contain border-t border-creme/10 bg-black px-4 pb-[max(2rem,env(safe-area-inset-bottom))] pt-4 [-webkit-overflow-scrolling:touch] lg:hidden"
+          className="mobile-nav-scroll border-t border-creme/10 bg-black px-4 pt-4 lg:hidden"
           aria-label="Mobile primary"
         >
           <div className="mx-auto grid max-w-7xl gap-1">
