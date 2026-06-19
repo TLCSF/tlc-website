@@ -133,6 +133,8 @@ function productKey(product: CmsMenuProduct) {
 }
 
 function MenuProductCard({ product }: { product: CmsMenuProduct }) {
+  const productCategory = product.displayCategory || product.category;
+
   return (
     <article className="overflow-hidden rounded-lg border border-ink/10 bg-paper shadow-sm">
       {product.imageUrl ? (
@@ -147,6 +149,11 @@ function MenuProductCard({ product }: { product: CmsMenuProduct }) {
         </div>
       ) : null}
       <div className="p-5 sm:p-6">
+        {productCategory ? (
+          <p className="mb-3 font-ui text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+            {productCategory}
+          </p>
+        ) : null}
         <div className="flex items-start justify-between gap-4">
           <h3 className="font-ui text-xl font-semibold leading-tight text-ink">
             {product.title}
