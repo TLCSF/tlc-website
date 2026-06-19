@@ -14,8 +14,14 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
     : [{ href: "/login", label: "Login" }];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-creme/10 bg-black text-creme">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <header
+      className={`border-b border-creme/10 bg-black text-creme ${
+        open
+          ? "fixed inset-0 z-50 flex h-[100dvh] flex-col overflow-hidden lg:sticky lg:top-0 lg:h-auto lg:overflow-visible"
+          : "sticky top-0 z-40"
+      }`}
+    >
+      <div className="mx-auto flex w-full max-w-7xl shrink-0 items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="Home">
           <Image
             src="/images/brand/tlc-bug-creme.png"
@@ -55,7 +61,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
       </div>
       {open ? (
         <nav
-          className="max-h-[calc(100dvh-65px)] overflow-y-auto overscroll-contain border-t border-creme/10 bg-black px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 [-webkit-overflow-scrolling:touch] lg:hidden"
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain border-t border-creme/10 bg-black px-4 pb-[max(2rem,env(safe-area-inset-bottom))] pt-4 [-webkit-overflow-scrolling:touch] lg:hidden"
           aria-label="Mobile primary"
         >
           <div className="mx-auto grid max-w-7xl gap-1">
