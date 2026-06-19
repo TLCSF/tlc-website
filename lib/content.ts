@@ -37,14 +37,15 @@ export const educationArticles = [
     slug: "dosage-guide",
     title: "Mushroom Dosage Guide",
     excerpt:
-      "Understand common dosage ranges and how different levels may influence experience.",
+      "Understand common dosage ranges and the experiences often associated with them.",
     body:
       "Dosage can play an important role in shaping an experience. This guide is educational in nature and should not be interpreted as medical advice."
   },
   {
     slug: "set-and-setting",
     title: "Set & Setting",
-    excerpt: "Learn how preparation and environment can shape an experience.",
+    excerpt:
+      "Learn how mindset, preparation, and environment can influence an experience.",
     body:
       "Set and setting describe the inner and outer conditions that shape an experience: mindset, intention, environment, support, and timing."
   },
@@ -52,7 +53,7 @@ export const educationArticles = [
     slug: "integration",
     title: "Integration",
     excerpt:
-      "Explore practices that help transform insight into lasting growth.",
+      "Explore practices that help bring insights from an experience into everyday life.",
     body:
       "Integration is the reflective work that follows a meaningful experience. Journaling, conversation, rest, and community support can help insights become part of daily life."
   },
@@ -75,12 +76,12 @@ export const educationArticles = [
 ];
 
 export const blogCategories = [
-  "Education",
+  "Getting Started",
+  "Preparation",
   "Community",
   "Spiritual Practice",
-  "Events",
-  "Preparation",
-  "Integration"
+  "Integration",
+  "Traditions"
 ];
 
 export const blogPosts: BlogPost[] = [
@@ -121,7 +122,7 @@ export const blogPosts: BlogPost[] = [
     title: "What Is a Spiritual Practice?",
     slug: "what-is-a-spiritual-practice",
     date: "2026-06-18",
-    category: "Education",
+    category: "Getting Started",
     excerpt:
       "Spiritual practice is less about special language and more about repeated ways of paying attention, making meaning, and living with care.",
     imageSrc: "/images/tlc/chapel-pew.jpg",
@@ -154,37 +155,49 @@ export const blogPosts: BlogPost[] = [
 export const dosageLevels = [
   {
     name: "Microdose",
-    range: "0.1–0.25g",
+    range: "0.1–0.25g mushrooms",
+    psilocybinRange: "0.7–1.75mg psilocybin",
+    color: "#b33535",
     description:
       "Subtle effects that may support presence, awareness, and day-to-day reflection without significantly altering perception."
   },
   {
     name: "Low Dose",
-    range: "0.25–0.75g",
+    range: "0.25–0.75g mushrooms",
+    psilocybinRange: "1.75–5mg psilocybin",
+    color: "#b76a32",
     description:
       "Light perceptual and emotional shifts that may encourage curiosity, creativity, and introspection."
   },
   {
     name: "Museum Dose",
-    range: "0.75–2g",
+    range: "0.75–2g mushrooms",
+    psilocybinRange: "5–14mg psilocybin",
+    color: "#e3c247",
     description:
       "A range often associated with heightened sensory awareness, appreciation, and connection while remaining engaged with the surrounding environment."
   },
   {
     name: "Moderate Dose",
-    range: "2–3.5g",
+    range: "2–3.5g mushrooms",
+    psilocybinRange: "14–25mg psilocybin",
+    color: "#6d8f3f",
     description:
       "A deeper inward experience that may include emotional insight, expanded awareness, and meaningful personal reflection."
   },
   {
     name: "High Dose",
-    range: "3.5–5g",
+    range: "3.5–5g mushrooms",
+    psilocybinRange: "25–35mg psilocybin",
+    color: "#67a6c7",
     description:
       "A powerful experience often associated with profound shifts in perception, spiritual exploration, and deep introspection."
   },
   {
     name: "Heroic Dose",
-    range: "5g+",
+    range: "5g+ mushrooms",
+    psilocybinRange: "35+mg psilocybin",
+    color: "#9b7892",
     description:
       "An intense and immersive experience that may include ego-transcendent or mystical states. This range is often approached with significant preparation, intention, and support."
   }
@@ -197,8 +210,8 @@ export const faqCategories = [
   "Set & Setting",
   "Integration",
   "Community",
-  "Store Access",
-  "Login & Technical Help",
+  "Member Access",
+  "Login Help",
   "Legal"
 ];
 
@@ -208,6 +221,12 @@ export const faqs = [
     question: "What is The Living Church?",
     answer:
       "The Living Church is a San Francisco-based entheogenic church and spiritual community centered around education, intentional practice, community care, and sacred mushroom traditions."
+  },
+  {
+    category: "Membership",
+    question: "Is membership free?",
+    answer:
+      "Yes. Membership in The Living Church is free for adults 21+. Becoming a member gives you access to educational resources, community gatherings, guidance and member-only offerings available through the church."
   },
   {
     category: "Membership",
@@ -279,13 +298,13 @@ export const faqs = [
     category: "Sacraments",
     question: "Why is the menu member-only?",
     answer:
-      "The menu is limited to active members because TLC treats sacramental access as part of a structured church pathway, not a retail-first experience. Membership registration and waiver completion come first."
+      "The menu is limited to active members because TLC treats member-only sacramental offerings as part of a structured church pathway, not a retail-first experience. Membership registration and waiver completion come first."
   },
   {
     category: "Sacraments",
     question: "Can visitors access sacraments without joining?",
     answer:
-      "No. TLC's sacrament menu is for active members only. Visitors and prospective members are encouraged to begin with public education, membership information, and community events."
+      "No. Member-only sacramental offerings are available to active members only. Visitors and prospective members are encouraged to begin with education, membership information, and community gatherings."
   },
   {
     category: "Sacraments",
@@ -297,13 +316,13 @@ export const faqs = [
     category: "Dosage",
     question: "What is the dosage guide for?",
     answer:
-      "The dosage guide offers educational context around commonly discussed ranges. It is not a recommendation, prescription, or guarantee of how any person will feel."
+      "The dosage guide offers educational context around commonly discussed ranges. It is not a recommendation, prescription, or guarantee of how any person will feel. Experience varies by person, preparation, setting, potency, and sensitivity."
   },
   {
     category: "Dosage",
     question: "What is a microdose?",
     answer:
-      "A microdose is commonly discussed as a very small amount, often around 0.1–0.25g. Effects can vary, and TLC frames dosage as only one part of a larger preparation and integration process."
+      "A microdose is commonly discussed as a very small amount, often around 0.1–0.25g. Effects can vary by person, potency, sensitivity, mindset, and setting. TLC frames dosage as only one part of a larger preparation and integration process."
   },
   {
     category: "Dosage",
@@ -333,7 +352,7 @@ export const faqs = [
     category: "Set & Setting",
     question: "Why does environment matter?",
     answer:
-      "Environment can influence whether an experience feels grounded, spacious, private, or overwhelming. Sound, light, comfort, trusted support, and interruptions can all make a difference."
+      "Environment can influence whether an experience feels grounded, spacious, and supportive. Sound, light, comfort, trusted support, and interruptions can all make a difference."
   },
   {
     category: "Set & Setting",
@@ -345,7 +364,7 @@ export const faqs = [
     category: "Set & Setting",
     question: "Should I participate alone?",
     answer:
-      "TLC encourages people to think carefully about support, context, and safety. Trusted community, preparation, and a grounded environment can be important parts of responsible participation."
+      "TLC encourages people to think carefully about support, context, and readiness. Trusted community, preparation, and a grounded environment can be important parts of responsible participation."
   },
   {
     category: "Set & Setting",
@@ -385,9 +404,9 @@ export const faqs = [
   },
   {
     category: "Community",
-    question: "Are there events or services?",
+    question: "Are there gatherings or events?",
     answer:
-      "Yes. TLC may offer community learning circles, educational gatherings, integration conversations, and member-oriented services. Event details can change, so check the Events page for current information."
+      "Yes. TLC may offer community gatherings, educational events, orientation-style gatherings, and integration conversations. Event details can change, so check the Events page for current information."
   },
   {
     category: "Community",
@@ -414,61 +433,61 @@ export const faqs = [
       "No. People arrive with different backgrounds and language. TLC uses a grounded, welcoming approach so adults can learn without needing to already know the culture or vocabulary."
   },
   {
-    category: "Store Access",
+    category: "Member Access",
     question: "How do I access the sacrament menu?",
     answer:
       "Create an account, complete membership registration, and sign the digital waiver. Once your membership is active, you can log in and view the member-only menu."
   },
   {
-    category: "Store Access",
-    question: "How do store staff verify my membership?",
+    category: "Member Access",
+    question: "How does TLC confirm my membership?",
     answer:
       "Your membership status helps staff confirm access to member resources and the sacrament menu. Use the same email address for your TLC account and waiver so your status is easy to confirm."
   },
   {
-    category: "Store Access",
+    category: "Member Access",
     question: "What if I already signed the waiver?",
     answer:
       "If you already completed the waiver, make sure your account and registration use the same identifying information where possible. If your status still does not look right, contact TLC for help matching your records."
   },
   {
-    category: "Store Access",
+    category: "Member Access",
     question: "Can I view the menu before my membership is active?",
     answer:
       "No. The sacrament menu is reserved for active members. Prospective members can still explore public education pages and membership information while completing the membership process."
   },
   {
-    category: "Store Access",
+    category: "Member Access",
     question: "Why does the process have multiple steps?",
     answer:
       "The steps help TLC keep sacramental access connected to membership, education, and waiver completion. The goal is clarity and responsibility, not unnecessary friction."
   },
   {
-    category: "Login & Technical Help",
+    category: "Login Help",
     question: "Who do I contact if I need help logging in?",
     answer:
       "Contact TLC directly through the contact information provided by the church or ask staff for help. Include the email address you used to register so they can look up your account more easily."
   },
   {
-    category: "Login & Technical Help",
+    category: "Login Help",
     question: "What should I do if my login works but I cannot see the menu?",
     answer:
       "Your membership may still be pending, your waiver may not be matched, or staff may still need to approve your account. Check your account status first, then contact TLC if anything looks incorrect."
   },
   {
-    category: "Login & Technical Help",
+    category: "Login Help",
     question: "What if I used the wrong email address?",
     answer:
       "If you registered or signed the waiver with a different email address, contact TLC so staff can help connect your records. Using consistent information makes activation smoother."
   },
   {
-    category: "Login & Technical Help",
+    category: "Login Help",
     question: "Can staff reset my password?",
     answer:
       "For security, password recovery is usually handled through the login system's reset process. Staff can help point you to the right place if you are unsure where to start."
   },
   {
-    category: "Login & Technical Help",
+    category: "Login Help",
     question: "Why does my account still say pending?",
     answer:
       "Pending usually means one or more membership steps still need to be completed or connected. Confirm that registration and waiver steps are complete, then contact TLC if the status does not update."
@@ -480,13 +499,13 @@ export const sampleEvents = [
     title: "Community Learning Circle",
     date: "First Thursday monthly",
     description:
-      "A welcoming gathering for members and prospective members to learn, ask questions, and connect."
+      "A welcoming gathering for curious newcomers, members, and anyone interested in learning more about TLC."
   },
   {
     title: "Integration Conversation",
     date: "Monthly",
     description:
-      "A reflective community space focused on meaning-making, grounded practice, and peer support."
+      "A community conversation focused on reflection, integration, and learning from experience in a supportive environment."
   }
 ];
 

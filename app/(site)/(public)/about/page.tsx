@@ -53,9 +53,10 @@ export default function AboutPage() {
         eyebrow="About"
         title="A spiritual home for education, care, and sacred practice."
         body="The Living Church is a San Francisco-based entheogenic church created for adults who want a thoughtful, community-centered way to approach sacred mushroom traditions."
-        imageSrc="/images/tlc/front-desk.jpg"
-        imageAlt="The Living Church front desk and welcome area"
+        imageSrc="/images/tlc/about-starry-sky.jpg"
+        imageAlt="A person looking up beneath a star-filled sky"
         imageMode="cover"
+        imagePosition="bottom"
       />
       <Section eyebrow="Mission" title="Our mission">
         <p className="max-w-3xl text-lg leading-8 text-ink/75">

@@ -5,13 +5,36 @@ export const siteConfig = {
     "A San Francisco-based entheogenic church and spiritual community centered around education, connection, and sacred mushroom traditions.",
   nav: [
     { href: "/about", label: "About" },
-    { href: "/menu", label: "Menu" },
-    { href: "/education", label: "Education" },
+    {
+      href: "/education",
+      label: "Education",
+      children: [
+        { href: "/education", label: "Education Overview" },
+        { href: "/education/dosage-guide", label: "Dosage Guide" },
+        { href: "/education/set-and-setting", label: "Set & Setting" },
+        { href: "/education/integration", label: "Integration" },
+        {
+          href: "/education/sacred-mushroom-traditions",
+          label: "Sacred Mushroom Traditions"
+        },
+        {
+          href: "/education/what-is-an-entheogenic-church",
+          label: "What Is an Entheogenic Church?"
+        },
+        { href: "/faq", label: "FAQ" },
+        { href: "/blog", label: "Blog" }
+      ]
+    },
+    {
+      href: "/community",
+      label: "Community",
+      children: [
+        { href: "/events#programs", label: "Gatherings" },
+        { href: "/events#calendar", label: "Events" }
+      ]
+    },
     { href: "/membership", label: "Membership" },
-    { href: "/community", label: "Community" },
-    { href: "/blog", label: "Blog" },
-    { href: "/events", label: "Events" },
-    { href: "/faq", label: "FAQ" },
+    { href: "/menu", label: "Menu" },
     { href: "/contact", label: "Contact" }
   ],
   memberNav: [

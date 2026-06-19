@@ -20,8 +20,8 @@ export const faq = defineType({
           "Set & Setting",
           "Integration",
           "Community",
-          "Store Access",
-          "Login & Technical Help"
+          "Member Access",
+          "Login Help"
         ]
       }
     }),

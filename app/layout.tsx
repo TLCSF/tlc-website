@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Living Church",
     description:
-      "A community for learning, exploration, and intentional practice.",
+      "Education, guidance, community, and sacred mushroom traditions.",
     url: siteConfig.url,
     siteName: "The Living Church",
     images: [{ url: "/images/tlc/chapel-wide.jpg", width: 1080, height: 1350 }],

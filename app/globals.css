@@ -105,3 +105,22 @@ button,
   font-size: 1.18rem;
   margin-top: 1.6rem;
 }
+
+.prose-tlc p + ul,
+.prose-tlc ul + p {
+  margin-top: 1.35rem;
+}
+
+.prose-tlc ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+}
+
+.prose-tlc li {
+  padding-left: 0.15rem;
+  margin-top: 0.55rem;
+}
+
+.prose-tlc li::marker {
+  color: var(--color-gold);
+}

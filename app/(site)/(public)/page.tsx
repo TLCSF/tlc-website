@@ -5,8 +5,31 @@ import { HomeHero } from "@/components/home-hero";
 import { ImageFeature } from "@/components/image-feature";
 import { JsonLd } from "@/components/json-ld";
 import { Section } from "@/components/section";
-import { educationArticles, faqs, seo } from "@/lib/content";
+import { educationArticles, seo } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
+
+const homeFaqs = [
+  {
+    question: "How do I become a member?",
+    answer:
+      "Create an account, complete the membership registration, and sign the digital waiver. Once your waiver is matched to your account, member resources and the sacrament menu become available."
+  },
+  {
+    question: "What are sacramental offerings?",
+    answer:
+      "Sacramental offerings are available to eligible members of The Living Church and are intended to support spiritual exploration, personal growth, and engagement with sacred mushroom traditions. Educational guidance is available to help members make informed decisions about their participation."
+  },
+  {
+    question: "Is membership free?",
+    answer:
+      "Yes. Membership in The Living Church is free. Becoming a member provides access to educational resources, community gatherings, and other offerings available through the church."
+  },
+  {
+    question: "How do I access the sacrament menu?",
+    answer:
+      "The sacrament menu is available to members after account registration and waiver completion. Log in with your member account to view available offerings."
+  }
+];
 
 export const metadata: Metadata = {
   title: { absolute: seo.home.title },
@@ -24,20 +47,18 @@ export default function HomePage() {
       <HomeHero />
       <Section eyebrow="What is TLC?" title="More than membership.">
         <p className="max-w-3xl text-lg leading-8 text-ink/75">
-          The Living Church exists to create a welcoming space for education,
-          community, and personal exploration. Through church services,
-          educational resources, events, and membership, we help individuals
-          engage with sacred mushroom traditions in a thoughtful and intentional
-          way.
+          Membership is just the beginning. The Living Church exists to support
+          thoughtful engagement with sacred mushroom traditions through
+          education, community, guidance, and access to sacramental offerings.
         </p>
       </Section>
       <Section tone="linen">
         <ImageFeature
-          src="/images/tlc/chapel-pew.jpg"
-          alt="Pews inside The Living Church chapel beneath framed artwork"
+          src="/images/tlc/community-hands.jpg"
+          alt="A group of hands resting together on a wooden table"
           eyebrow="A real place to gather"
           title="A grounded spiritual home in San Francisco."
-          body="The space is designed for learning, reflection, and community connection rather than a retail-first experience."
+          body="TLC offers a welcoming physical space where members can ask questions, connect with others, access educational resources, and engage with sacramental traditions in a thoughtful and supportive environment."
         />
       </Section>
       <Section eyebrow="Education" title="Learn before you leap." tone="linen">
@@ -59,18 +80,19 @@ export default function HomePage() {
               Community
             </p>
             <h2 className="mt-3 max-w-2xl font-serif text-3xl font-semibold leading-tight sm:text-5xl">
-              A community of curious minds.
+              The journey is personal. The path doesn&apos;t have to be.
             </h2>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-ink/75">
-              Growth happens in relationship with others. TLC creates room for
-              adults to learn, reflect, and participate in community life
-              together.
+              Meaningful experiences are often easier to navigate alongside
+              others. Through gatherings, conversations, events, and shared
+              learning, TLC helps members connect with a broader community
+              exploring these traditions together.
             </p>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-linen shadow-soft">
             <Image
-              src="/images/tlc/event-space-01.jpg"
-              alt="The Living Church gathering space prepared for community events"
+              src="/images/tlc/community-sunset.jpg"
+              alt="A small group gathered outdoors at sunset overlooking a lake"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -81,21 +103,21 @@ export default function HomePage() {
       <Section eyebrow="Membership" title="Membership opens the door." tone="ink">
         <div className="grid gap-8 lg:grid-cols-[1fr_0.7fr]">
           <p className="max-w-3xl text-lg leading-8 text-paper/75">
-            Membership provides access to church services, educational
-            resources, community events, and sacramental participation within
-            the framework of The Living Church.
+            Membership is free and provides access to educational resources,
+            community gatherings, guidance, and sacramental participation within
+            The Living Church.
           </p>
           <a
             href="/join"
             className="inline-flex min-h-12 items-center justify-center rounded-md bg-gold px-5 py-3 font-semibold text-ink transition hover:bg-paper"
           >
-            Start Membership
+            Join Today
           </a>
         </div>
       </Section>
-      <Section eyebrow="Questions" title="Common questions">
+      <Section eyebrow="Still curious?" title="Common questions.">
         <div className="grid gap-4 md:grid-cols-2">
-          {faqs.slice(0, 4).map((faq) => (
+          {homeFaqs.map((faq) => (
             <details
               key={faq.question}
               className="rounded-lg border border-ink/10 bg-paper p-5"

@@ -6,7 +6,8 @@ export function ImageFeature({
   eyebrow,
   title,
   body,
-  reverse = false
+  reverse = false,
+  imagePosition = "center"
 }: {
   src: string;
   alt: string;
@@ -14,6 +15,7 @@ export function ImageFeature({
   title: string;
   body: string;
   reverse?: boolean;
+  imagePosition?: "center" | "top" | "bottom";
 }) {
   return (
     <div
@@ -22,7 +24,19 @@ export function ImageFeature({
       }`}
     >
       <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-linen shadow-soft">
-        <Image src={src} alt={alt} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className={`object-cover ${
+            imagePosition === "top"
+              ? "object-top"
+              : imagePosition === "bottom"
+                ? "object-bottom"
+                : "object-center"
+          }`}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+        />
       </div>
       <div>
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">

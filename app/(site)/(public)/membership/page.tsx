@@ -13,37 +13,41 @@ export default function MembershipPage() {
   const membershipSteps = [
     {
       step: "Step 1",
-      title: "Create an account",
-      body:
-        "Start by creating a secure member account with your email and password. This gives you a private place to continue registration and return later to check your status."
+      title: "Create your free account",
+      body: "Start with your name, email and secure password."
     },
     {
       step: "Step 2",
-      title: "Complete membership registration",
+      title: "Complete registration",
       body:
-        "Add your basic profile details so TLC can identify you, communicate clearly, and connect your account to the waiver process."
+        "Share the basic information TLC needs to identify you and connect your account to the waiver process."
     },
     {
       step: "Step 3",
       title: "Sign the digital waiver",
       body:
-        "TLC uses Smartwaiver for required digital documents. Complete the waiver using the same email address as your TLC account so your membership can be connected automatically."
+        "Complete the required Smartwaiver using the same email address as your TLC account."
     },
     {
       step: "Step 4",
-      title: "Become an active member",
+      title: "Activate your membership",
       body:
-        "Once your completed waiver is matched to your TLC account, your profile is marked active and member-only areas can be accessed."
+        "Once your waiver is matched to your account, your member status becomes active."
     },
     {
       step: "Step 5",
-      title: "Access member resources and the sacrament menu",
+      title: "Access member resources",
       body:
-        "Active members can log in to view member resources, community areas, account status, and the sacrament menu. The menu remains private and member-gated."
+        "Active members can log in to view educational resources, account status and the member-only sacrament menu."
     }
   ];
 
   const membershipFaqs = [
+    {
+      question: "Is membership free?",
+      answer:
+        "Yes. Membership in The Living Church is free for adults 21+. Becoming a member gives you access to educational resources, community gatherings, guidance and member-only offerings available through the church."
+    },
     {
       question: "How do I become a member?",
       answer:
@@ -65,7 +69,7 @@ export default function MembershipPage() {
         "Log in with an active member account. If your account is not active yet, the menu remains locked and you will be directed back to the membership pathway."
     },
     {
-      question: "How do store staff verify my membership?",
+      question: "How does TLC confirm my membership?",
       answer:
         "Your membership status helps staff confirm access to member resources and the sacrament menu."
     },
@@ -80,8 +84,8 @@ export default function MembershipPage() {
     <main>
       <Hero
         eyebrow="Membership"
-        title="Membership starts with a clear path."
-        body="Joining The Living Church is designed to be straightforward: create an account, complete registration, and sign the required waiver to activate member-only access."
+        title="Membership opens the door."
+        body="Membership is free and gives adults 21+ access to educational resources, community gatherings, guidance and member-only sacramental offerings within The Living Church. Create an account, complete registration and sign the digital waiver to begin."
         primaryHref="/register"
         primaryLabel="Create Account"
         secondaryHref="/login"
@@ -92,24 +96,24 @@ export default function MembershipPage() {
       />
       <Section eyebrow="Why membership?" title="Why join?">
         <p className="max-w-3xl text-lg leading-8 text-ink/75">
-          Membership gives TLC a responsible way to know who is participating,
-          confirm required documents, and provide access to private resources
-          after the right steps are complete. It also gives members a
-          simple account-based path for checking status and returning to the
-          community over time.
+          Membership helps TLC create a responsible, supportive path for people
+          engaging with sacred mushroom traditions. It allows us to confirm
+          required steps, provide guidance and make member-only resources
+          available in a clear and secure way.
         </p>
       </Section>
       <Section tone="linen">
         <ImageFeature
-          src="/images/tlc/chapel-pew.jpg"
-          alt="The Living Church chapel seating and framed wall art"
+          src="/images/tlc/membership-mushroom-hand.jpg"
+          alt="A hand holding a small mushroom in a natural setting"
           eyebrow="A clear pathway"
-          title="Membership connects the public site to a private member experience."
-          body="The public site helps you understand TLC first. Your member account then carries the practical details: registration, waiver status, resources, and menu access."
+          title="From curiosity to participation."
+          body="The public site is here to help you learn first. Once you become a member, your account gives you access to the practical next steps: waiver status, educational resources and the member-only sacrament menu."
+          imagePosition="bottom"
           reverse
         />
       </Section>
-      <Section eyebrow="How membership works" title="A transparent five-step process">
+      <Section eyebrow="How membership works" title="A simple path to membership.">
         <div className="grid gap-4 lg:grid-cols-5">
           {membershipSteps.map((item) => (
             <article

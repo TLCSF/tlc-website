@@ -13,7 +13,8 @@ export function Hero({
   imageAlt = "The Living Church logo mark",
   imageMode = "contain",
   imageSide = "right",
-  imageSize = "default"
+  imageSize = "default",
+  imagePosition = "center"
 }: {
   eyebrow?: string;
   title: string;
@@ -27,6 +28,7 @@ export function Hero({
   imageMode?: "cover" | "contain";
   imageSide?: "left" | "right";
   imageSize?: "default" | "compact";
+  imagePosition?: "top" | "center" | "bottom";
 }) {
   const image = (
     <div
@@ -44,7 +46,17 @@ export function Hero({
         src={imageSrc}
         alt={imageAlt}
         fill
-        className={imageMode === "cover" ? "object-cover" : "object-contain"}
+        className={
+          imageMode === "cover"
+            ? `object-cover ${
+                imagePosition === "top"
+                  ? "object-top"
+                  : imagePosition === "bottom"
+                    ? "object-bottom"
+                    : "object-center"
+              }`
+            : "object-contain"
+        }
         priority
       />
     </div>

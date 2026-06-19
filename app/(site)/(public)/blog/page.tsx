@@ -24,9 +24,9 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Resource Library",
   description:
-    "Read The Living Church blog for grounded education, community context, spiritual practice, preparation, and integration resources."
+    "Explore The Living Church resource library for preparation, integration, spiritual practice, community life, and sacred mushroom traditions."
 };
 
 function fromFallbackPost(post: BlogPost): BlogListPost {
@@ -74,19 +74,18 @@ export default async function BlogPage({ searchParams }: Props) {
   return (
     <main>
       <Hero
-        eyebrow="Blog"
-        title="Education, community, and practice notes."
-        body="The TLC Blog is a resource library for grounded learning, spiritual practice, community context, preparation, and integration."
+        eyebrow="Resource Library"
+        title="Learning doesn't end after orientation."
+        body="The TLC Resource Library helps members and visitors continue learning between conversations, gatherings, and personal reflection. Explore articles on preparation, integration, spiritual practice, community life, and sacred mushroom traditions."
         imageSrc="/images/tlc/chapel-pew.jpg"
         imageAlt="A quiet chapel space inside The Living Church"
         imageMode="cover"
       />
-      <Section eyebrow="Resource library" title="Read before, between, and after gathering.">
+      <Section eyebrow="Resource library" title="Read before, between, and after gatherings.">
         <p className="max-w-3xl text-lg leading-8 text-ink/75">
-          These posts support the wider TLC pathway: learning the language,
-          understanding the setting, preparing with care, and staying connected
-          to community. Start here when you want a thoughtful entry point or a
-          next question to bring into conversation.
+          Learning at TLC happens over time. These articles provide context,
+          answer common questions, and support the ongoing process of
+          preparation, participation, and integration.
         </p>
       </Section>
       {featuredPost ? (
@@ -121,7 +120,7 @@ export default async function BlogPage({ searchParams }: Props) {
           </Link>
         </Section>
       ) : null}
-      <Section eyebrow="Browse" title="Latest posts">
+      <Section eyebrow="Browse" title="Browse the library">
         <div className="mb-8 flex flex-wrap gap-2">
           <Link
             href="/blog"
@@ -160,6 +159,30 @@ export default async function BlogPage({ searchParams }: Props) {
               href={`/blog/${post.slug}`}
             />
           ))}
+        </div>
+      </Section>
+      <Section eyebrow="Continue exploring" title="Every question leads somewhere." tone="linen">
+        <div className="grid gap-8 lg:grid-cols-[1fr_0.6fr]">
+          <p className="max-w-3xl text-lg leading-8 text-ink/75">
+            Whether you&apos;re preparing for membership, reflecting on an
+            experience, or simply exploring new ideas, the Resource Library is
+            designed to support thoughtful participation at every stage of the
+            journey.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <Link
+              href="/membership"
+              className="inline-flex min-h-12 items-center justify-center rounded-md bg-gold px-6 py-3 font-ui text-sm font-semibold text-black transition hover:bg-gold/85"
+            >
+              Explore Membership
+            </Link>
+            <Link
+              href="/education"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border border-gold px-6 py-3 font-ui text-sm font-semibold text-gold transition hover:bg-gold hover:text-black"
+            >
+              Explore Education
+            </Link>
+          </div>
         </div>
       </Section>
     </main>

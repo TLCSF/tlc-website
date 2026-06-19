@@ -14,19 +14,19 @@ export const metadata: Metadata = {
 export default function EducationPage() {
   const educationPath = [
     {
-      title: "Understand the basics",
+      title: "Build a foundation",
       body:
-        "Start with plain-language context on dosage ranges, set and setting, integration, traditions, and what an entheogenic church is."
+        "Learn the language, traditions, dosage considerations, and core ideas that shape the TLC approach."
     },
     {
-      title: "Prepare for conversations",
+      title: "Participate thoughtfully",
       body:
-        "The articles give members shared vocabulary for orientation, events, and personal preparation."
+        "Develop the shared vocabulary and understanding that support meaningful conversations with guides, staff, and fellow members."
     },
     {
-      title: "Return after experience",
+      title: "Integrate what you've learned",
       body:
-        "Integration resources help members notice what needs attention afterward and bring better questions back to the community."
+        "Reflection doesn't end when an experience does. Integration resources help transform insight into lasting growth."
     }
   ];
 
@@ -42,18 +42,18 @@ export default function EducationPage() {
       <Hero
         eyebrow="Education Hub"
         title="A practical starting point for informed participation."
-        body="The Education Hub helps adults understand TLC's language, expectations, and sacramental context before they move deeper into membership."
+        body="Whether you're completely new to sacred mushrooms or simply looking for deeper context, these resources are designed to help you explore thoughtfully, ask better questions, and make informed decisions about your path."
         imageSrc="/images/tlc/dosage-candles.jpg"
         imageAlt="Candles and educational materials inside The Living Church chapel"
         imageMode="cover"
       />
       <Section tone="linen">
         <ImageFeature
-          src="/images/tlc/chapel-pew.jpg"
-          alt="Chapel seating inside The Living Church"
+          src="/images/tlc/dosage-cards-education.jpg"
+          alt="Printed dosage guide cards arranged on a wooden table"
           eyebrow="Grounded learning"
           title="Education comes before participation."
-          body="TLC's resources are meant to slow the process down. Members are encouraged to read, ask questions, complete required steps, and understand the setting before engaging more deeply."
+          body="At TLC, curiosity is encouraged, but rushing is not. These resources are designed to provide context, encourage reflection, and help members approach sacramental experiences with greater intention and understanding."
         />
       </Section>
       <Section eyebrow="How education supports members" title="A path from curiosity to readiness.">
@@ -65,6 +65,14 @@ export default function EducationPage() {
             </article>
           ))}
         </div>
+      </Section>
+      <Section eyebrow="Why education matters" title="Context changes everything." tone="linen">
+        <p className="max-w-3xl text-lg leading-8 text-ink/75">
+          Sacred mushrooms have been used for centuries in ceremonial,
+          spiritual, and healing traditions around the world. TLC believes that
+          knowledge, preparation, and community support can help create a more
+          meaningful and responsible relationship with these traditions.
+        </p>
       </Section>
       <Section eyebrow="Featured topics" title="Learn before you leap.">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -78,12 +86,14 @@ export default function EducationPage() {
           ))}
         </div>
       </Section>
-      <Section eyebrow="Positioning" title="What these resources are, and are not." tone="linen">
+      <Section eyebrow="Positioning" title="Guidance, not guarantees." tone="linen">
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
           <p className="text-lg leading-8 text-ink/75">
-            TLC education is not medical advice, legal advice, or a promise of
-            a particular experience. It is a shared foundation for adults who
-            want to approach membership with more care, context, and humility.
+            Every person&apos;s path is different. These resources are not medical
+            advice, legal advice, or promises about any particular outcome.
+            They are educational materials intended to help adults approach
+            sacred mushroom traditions with greater awareness, context, and
+            responsibility.
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {principles.map((principle) => (

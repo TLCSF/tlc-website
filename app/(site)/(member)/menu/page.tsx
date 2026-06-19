@@ -14,8 +14,10 @@ export const metadata: Metadata = {
 };
 
 export default async function MenuPage() {
+  // Temporary client-review setting: set this back to false to restore the member gate.
+  const menuOpenForClientReview = true;
   const profile = await getCurrentProfile();
-  const active = isActiveMember(profile);
+  const active = menuOpenForClientReview || isActiveMember(profile);
 
   if (!active) {
     return <MenuAccessPage />;
@@ -27,28 +29,62 @@ export default async function MenuPage() {
     : sampleProducts;
   const groupedProducts = groupMenuProducts(products);
 
+  const menuContent = <MenuProductSections groupedProducts={groupedProducts} />;
+
+  if (menuOpenForClientReview) {
+    return <PublicMenuPreviewShell>{menuContent}</PublicMenuPreviewShell>;
+  }
+
   return (
     <MemberShell title="Member Menu">
-      <div className="grid gap-12">
-        {groupedProducts.map(([category, categoryProducts]) => (
-          <section key={category} aria-labelledby={categoryId(category)}>
-            <div className="rounded-lg bg-black px-6 py-10 text-center shadow-soft sm:py-12">
-              <h2
-                id={categoryId(category)}
-                className="font-serif text-5xl font-semibold leading-none text-creme sm:text-6xl"
-              >
-                {category}
-              </h2>
-            </div>
-            <div className="mt-6 grid gap-5 md:grid-cols-2">
-              {categoryProducts.map((product) => (
-                <MenuProductCard key={productKey(product)} product={product} />
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+      {menuContent}
     </MemberShell>
+  );
+}
+
+function MenuProductSections({
+  groupedProducts
+}: {
+  groupedProducts: [string, CmsMenuProduct[]][];
+}) {
+  return (
+    <div className="grid gap-12">
+      {groupedProducts.map(([category, categoryProducts]) => (
+        <section key={category} aria-labelledby={categoryId(category)}>
+          <div className="rounded-lg bg-black px-6 py-10 text-center shadow-soft sm:py-12">
+            <h2
+              id={categoryId(category)}
+              className="font-serif text-5xl font-semibold leading-none text-creme sm:text-6xl"
+            >
+              {category}
+            </h2>
+          </div>
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            {categoryProducts.map((product) => (
+              <MenuProductCard key={productKey(product)} product={product} />
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function PublicMenuPreviewShell({ children }: { children: React.ReactNode }) {
+  return (
+    <main className="bg-linen py-10 sm:py-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">
+            Member area
+          </p>
+          <h1 className="mt-2 font-serif text-4xl leading-tight sm:text-5xl">
+            Member Menu
+          </h1>
+        </div>
+        {children}
+      </div>
+    </main>
   );
 }
 
@@ -150,10 +186,10 @@ function MenuProductCard({ product }: { product: CmsMenuProduct }) {
 
 function MenuAccessPage() {
   const steps = [
-    "Create an account",
-    "Complete registration",
+    "Create your free membership",
     "Sign the digital waiver",
-    "Once active, access the sacrament menu"
+    "Activate your account",
+    "Access the sacrament menu"
   ];
 
   return (
@@ -164,13 +200,13 @@ function MenuAccessPage() {
             Member menu
           </p>
           <h1 className="mt-3 max-w-3xl font-serif text-5xl font-semibold leading-[0.95] text-ink sm:text-6xl lg:text-7xl">
-            Member Access Required
+            Membership Required
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/75">
             The sacrament menu is available to active members of The Living
-            Church. If you&apos;re already a member, log in to continue. If
-            you&apos;re new to TLC, membership begins with a simple registration
-            and waiver process.
+            Church. Membership is free and begins with a simple registration
+            and waiver process. If you&apos;re already a member, log in to
+            continue.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link

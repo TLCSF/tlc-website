@@ -8,7 +8,7 @@ export function Footer() {
         <div>
           <p className="font-serif text-2xl">The Living Church</p>
           <p className="mt-4 max-w-md text-sm leading-7 text-paper/75">
-            A community for learning, exploration, and intentional practice.
+            Education, guidance, community, and sacred mushroom traditions.
             Adults 21+ only.
           </p>
         </div>

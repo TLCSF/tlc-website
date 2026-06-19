@@ -39,7 +39,9 @@ export function ContactForm() {
 
       form.reset();
       setState("success");
-      setMessage("Thank you. Your message has been sent to The Living Church.");
+      setMessage(
+        "Thank you. Your message has been sent. Someone from The Living Church will get back to you soon."
+      );
     } catch (error) {
       setState("error");
       setMessage(
@@ -93,7 +95,7 @@ export function ContactForm() {
         disabled={state === "submitting"}
         className="font-ui mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-md border border-gold bg-gold px-5 py-3 text-sm font-semibold text-black transition hover:bg-ink hover:text-creme disabled:cursor-wait disabled:opacity-70 sm:w-auto"
       >
-        {state === "submitting" ? "Sending..." : "Submit"}
+        {state === "submitting" ? "Sending..." : "Send Message"}
       </button>
       {message ? (
         <p

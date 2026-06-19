@@ -24,12 +24,12 @@ export const blogPost = defineType({
       type: "string",
       options: {
         list: [
-          "Education",
+          "Getting Started",
+          "Preparation",
           "Community",
           "Spiritual Practice",
-          "Events",
-          "Preparation",
-          "Integration"
+          "Integration",
+          "Traditions"
         ]
       },
       validation: (Rule) => Rule.required()

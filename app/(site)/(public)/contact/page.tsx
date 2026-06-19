@@ -42,12 +42,12 @@ export default function ContactPage() {
       <Hero
         eyebrow="Contact"
         title="Contact The Living Church"
-        body="Have a question about membership, events, education or visiting The Living Church? Send us a message and our team will get back to you."
+        body="Have a question about membership, events, educational resources, visiting TLC or accessing member resources? Send us a message and we’ll help point you in the right direction."
         imageSrc="/images/tlc/exterior.jpg"
         imageAlt="The Living Church entrance on Post Street in San Francisco"
         imageMode="cover"
       />
-      <Section eyebrow="Visit or write" title="We are here to help.">
+      <Section eyebrow="Get in touch" title="We are here to help.">
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             <InfoCard title="Location">
@@ -60,8 +60,8 @@ export default function ContactPage() {
             </InfoCard>
             <InfoCard title="Good reasons to reach out">
               <p>
-                Membership questions, event details, education resources,
-                waiver support, account access, and general visit planning.
+                Membership questions, waiver support, account access, upcoming
+                gatherings, educational resources and planning a first visit.
               </p>
             </InfoCard>
           </div>
@@ -69,6 +69,10 @@ export default function ContactPage() {
         </div>
       </Section>
       <Section eyebrow="Find us" title="1081 Post Street, San Francisco" tone="linen">
+        <p className="mb-8 max-w-3xl text-lg leading-8 text-ink/75">
+          Find us in San Francisco at 1081 Post Street. If you’re planning your
+          first visit, feel free to reach out with questions before you arrive.
+        </p>
         <div className="overflow-hidden rounded-lg border border-ink/10 bg-paper shadow-sm">
           <iframe
             title="Map to The Living Church at 1081 Post St, San Francisco"
@@ -86,8 +90,8 @@ export default function ContactPage() {
       >
         <div id="service-areas" className="scroll-mt-28">
           <p className="max-w-3xl text-lg leading-8 text-ink/75">
-            The Living Church is rooted in San Francisco and welcomes members
-            from across the Bay Area.
+            The Living Church is rooted in San Francisco and welcomes adults
+            21+ from across the Bay Area.
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {serviceAreas.map((area) => (

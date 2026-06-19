@@ -68,13 +68,17 @@ export function HomeHero() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-black/5" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
-        <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:min-h-[760px] lg:px-8">
-          <h1 className="max-w-[660px] text-[clamp(4rem,10.4vw,9.6rem)] leading-[0.8] tracking-normal text-creme drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
+        <div className="relative mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:min-h-[760px] lg:px-8">
+          <h1 className="max-w-[560px] text-[clamp(3.2rem,8.3vw,7.7rem)] leading-[0.8] tracking-normal text-creme drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
             <span className="block">Ancient</span>
             <span className="block">Wisdom</span>
             <span className="block text-gold">Modern</span>
             <span className="block text-gold">Guidance</span>
           </h1>
+          <p className="mt-7 max-w-2xl text-lg leading-7 text-creme/88 sm:text-xl sm:leading-8">
+            A spiritual community offering education, guidance, and
+            sacramental participation rooted in sacred mushroom traditions.
+          </p>
         </div>
       </div>
 
@@ -90,14 +94,15 @@ export function HomeHero() {
           />
         </div>
         <div className="max-w-3xl self-center">
-          <p className="font-ui text-xl font-semibold uppercase leading-tight tracking-normal text-gold sm:text-3xl">
-            A community for learning, exploration, and intentional practice.
+          <p className="font-ui text-lg font-semibold uppercase leading-tight tracking-normal text-gold sm:text-2xl">
+            Education. Guidance. Community.
           </p>
-          <p className="mt-7 text-lg leading-8 text-creme/88">
-            The Living Church is a spiritual community centered around
-            education, connection, and sacred mushroom traditions. Whether
-            you&apos;re just beginning your journey or looking for a deeper community
-            of practice, we&apos;re here to learn and grow together.
+          <p className="mt-7 text-base leading-7 text-creme/88 sm:text-lg sm:leading-8">
+            The Living Church helps members engage sacred mushroom traditions
+            through educational resources, community gatherings, and access to
+            sacramental offerings. Whether you&apos;re beginning your journey or
+            deepening an existing practice, TLC provides a place to learn,
+            connect, and participate with intention.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link

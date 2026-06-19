@@ -67,26 +67,30 @@ export default async function EducationArticlePage({ params }: Props) {
   if (!article) notFound();
 
   const isDosage = slug === "dosage-guide";
+  const isSetAndSetting = slug === "set-and-setting";
+  const isIntegration = slug === "integration";
+  const isSacredMushroomTraditions = slug === "sacred-mushroom-traditions";
+  const isEntheogenicChurch = slug === "what-is-an-entheogenic-church";
   const articleImages: Record<string, { src: string; alt: string }> = {
     "dosage-guide": {
       src: "/images/tlc/dosage-card.jpg",
       alt: "The Living Church educational dosage guide card"
     },
     "set-and-setting": {
-      src: "/images/tlc/dosage-candles.jpg",
-      alt: "Candles and educational materials arranged inside The Living Church chapel"
+      src: "/images/tlc/set-setting-candles.jpg",
+      alt: "Candles surrounding a small Buddha statue in a quiet setting"
     },
     integration: {
-      src: "/images/tlc/event-space-03.jpg",
-      alt: "The Living Church gathering space used for integration and community"
+      src: "/images/tlc/integration-journaling.jpg",
+      alt: "A person journaling during a quiet moment of reflection"
     },
     "sacred-mushroom-traditions": {
-      src: "/images/tlc/chapel-pew.jpg",
-      alt: "Chapel pews inside The Living Church"
+      src: "/images/tlc/sacred-mushroom-closeup.jpg",
+      alt: "Close-up of mushrooms against a dark background"
     },
     "what-is-an-entheogenic-church": {
-      src: "/images/tlc/front-desk.jpg",
-      alt: "The Living Church front desk and welcome area"
+      src: "/images/tlc/entheogenic-church-chapel-pew.jpg",
+      alt: "Chapel pews beneath framed mushroom artwork inside The Living Church"
     }
   };
   const articleImage = articleImages[slug] ?? {
@@ -103,6 +107,11 @@ export default async function EducationArticlePage({ params }: Props) {
         imageSrc={articleImage.src}
         imageAlt={articleImage.alt}
         imageMode="cover"
+        imagePosition={
+          isSetAndSetting || isSacredMushroomTraditions || isEntheogenicChurch
+            ? "bottom"
+            : "center"
+        }
       />
       {isDosage ? (
         <>
@@ -138,14 +147,18 @@ export default async function EducationArticlePage({ params }: Props) {
                       <h2 className="font-ui text-lg font-semibold">
                         {level.name}
                       </h2>
-                      <p className="font-ui text-sm font-semibold uppercase tracking-[0.12em] text-gold">
-                        {level.range}
-                      </p>
+                      <div className="text-right font-ui text-sm font-semibold uppercase tracking-[0.08em] text-ink/75">
+                        <p>{level.range}</p>
+                        <p>{level.psilocybinRange}</p>
+                      </div>
                     </div>
                     <div className="h-3 overflow-hidden rounded-full bg-linen">
                       <div
-                        className="h-full rounded-full bg-gold"
-                        style={{ width: dosageSpectrumWidths[index] }}
+                        className="h-full rounded-full"
+                        style={{
+                          width: dosageSpectrumWidths[index],
+                          backgroundColor: level.color
+                        }}
                         aria-hidden="true"
                       />
                     </div>
@@ -155,22 +168,6 @@ export default async function EducationArticlePage({ params }: Props) {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {dosageLevels.map((level) => (
-                <article
-                  key={level.name}
-                  className="rounded-lg border border-ink/10 bg-paper p-6"
-                >
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cedar">
-                    {level.range}
-                  </p>
-                  <h2 className="mt-3 font-serif text-2xl">{level.name}</h2>
-                  <p className="mt-3 leading-7 text-ink/70">
-                    {level.description}
-                  </p>
-                </article>
-              ))}
             </div>
           </Section>
           <Section eyebrow="Experience varies" title="A range is not the whole story.">
@@ -267,6 +264,158 @@ export default async function EducationArticlePage({ params }: Props) {
             </div>
           </Section>
         </>
+      ) : isSetAndSetting ? (
+        <Section title="Creating the conditions for a meaningful experience">
+          <div className="prose-tlc max-w-3xl">
+            <p>
+              Thoughtful preparation can help create the conditions for a more
+              grounded experience. Consider the following before your journey
+              begins:
+            </p>
+            <ul>
+              <li>Choose a comfortable, familiar environment.</li>
+              <li>Minimize interruptions and distractions.</li>
+              <li>Set aside adequate time and avoid rushing.</li>
+              <li>
+                Consider who will be present and how they contribute to the
+                atmosphere.
+              </li>
+              <li>
+                Have water, comfortable seating, and basic necessities nearby.
+              </li>
+              <li>
+                Approach the experience with intention rather than expectation.
+              </li>
+            </ul>
+            <p>
+              No environment is perfect, but small preparations can help create
+              a greater sense of comfort, safety, and presence. TLC encourages
+              members to approach participation with care, curiosity, and
+              respect for both the experience itself and the conditions that
+              surround it.
+            </p>
+          </div>
+        </Section>
+      ) : isIntegration ? (
+        <Section title="Bringing insight into everyday life">
+          <div className="prose-tlc max-w-3xl">
+            <p>
+              Integration is often less about finding the perfect
+              interpretation and more about creating space to reflect, notice
+              patterns, and stay connected to what feels meaningful.
+            </p>
+            <p>Simple integration practices may include:</p>
+            <ul>
+              <li>
+                Journaling thoughts, emotions, or observations that stand out.
+              </li>
+              <li>Taking walks or spending quiet time in nature.</li>
+              <li>
+                Talking with trusted friends, mentors, or community members.
+              </li>
+              <li>
+                Returning to practices such as meditation, prayer, or
+                reflection.
+              </li>
+              <li>
+                Making small, sustainable changes rather than chasing dramatic
+                transformation.
+              </li>
+              <li>Allowing insights to unfold gradually over time.</li>
+            </ul>
+            <p>
+              There is no single right way to integrate an experience. TLC
+              encourages a thoughtful, patient approach supported by reflection,
+              community conversation, and ongoing learning.
+            </p>
+          </div>
+        </Section>
+      ) : isSacredMushroomTraditions ? (
+        <Section title="Learning with respect and context">
+          <div className="prose-tlc max-w-3xl">
+            <p>
+              Sacred mushroom traditions span different cultures, histories,
+              ceremonies, and systems of belief. While details vary, many
+              traditions share an emphasis on preparation, community, intention,
+              and respect for the experience itself.
+            </p>
+            <p>When exploring this topic, it can be helpful to:</p>
+            <ul>
+              <li>
+                Learn from credible sources rather than social media myths or
+                sensational claims.
+              </li>
+              <li>
+                Recognize that traditions differ across cultures and
+                communities.
+              </li>
+              <li>
+                Approach unfamiliar practices with curiosity rather than
+                certainty.
+              </li>
+              <li>
+                Consider the role of ceremony, community, and preparation
+                alongside the experience itself.
+              </li>
+              <li>
+                Distinguish between historical traditions, contemporary
+                practices, and personal beliefs.
+              </li>
+              <li>
+                Remain open to learning while acknowledging the limits of
+                one&apos;s own understanding.
+              </li>
+            </ul>
+            <p>
+              TLC does not claim ownership of these traditions. Our goal is to
+              encourage thoughtful learning, respectful engagement, and a deeper
+              appreciation for the cultural and spiritual contexts that have
+              shaped them.
+            </p>
+          </div>
+        </Section>
+      ) : isEntheogenicChurch ? (
+        <Section title="Common elements of an entheogenic church">
+          <div className="prose-tlc max-w-3xl">
+            <p>
+              While every organization is different, many entheogenic churches
+              share a commitment to education, community, spiritual exploration,
+              and responsible participation.
+            </p>
+            <p>Visitors may encounter elements such as:</p>
+            <ul>
+              <li>
+                Educational resources that support informed decision-making.
+              </li>
+              <li>
+                Community gatherings focused on discussion, learning, and
+                connection.
+              </li>
+              <li>
+                Spiritual practices that encourage reflection, intention, and
+                meaning-making.
+              </li>
+              <li>
+                Clear expectations around participation, preparation, and
+                personal responsibility.
+              </li>
+              <li>
+                Opportunities for ongoing conversation before and after
+                significant experiences.
+              </li>
+              <li>
+                A framework that emphasizes respect, community care, and
+                thoughtful engagement.
+              </li>
+            </ul>
+            <p>
+              TLC approaches these principles through education, membership,
+              community support, and intentional practice. The goal is not to
+              provide answers for everyone, but to create a place where people
+              can explore meaningful questions with care and respect.
+            </p>
+          </div>
+        </Section>
       ) : (
         <Section title={article.title}>
           <div className="prose-tlc max-w-3xl">

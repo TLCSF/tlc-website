@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { JsonLd } from "@/components/json-ld";
 import { Section } from "@/components/section";
@@ -43,7 +44,26 @@ export default async function FaqPage() {
         title="Frequently asked questions"
         tone="linen"
       >
-        <div className="grid gap-10">
+        <p className="max-w-3xl text-lg leading-8 text-ink/75">
+          Start here for practical answers about membership, sacramental
+          access, dosage, preparation, community and visiting The Living
+          Church.
+        </p>
+        <nav
+          aria-label="FAQ categories"
+          className="mt-8 flex flex-wrap gap-2"
+        >
+          {faqCategories.map((category) => (
+            <a
+              key={category}
+              href={`#${categoryId(category)}`}
+              className="rounded-full border border-ink/15 bg-paper px-4 py-2 font-ui text-sm font-semibold text-ink transition hover:border-gold hover:text-gold"
+            >
+              {category}
+            </a>
+          ))}
+        </nav>
+        <div className="mt-12 grid gap-10">
           {faqCategories.map((category) => {
             const categoryItems = items.filter(
               (faq) => faq.category === category
@@ -100,6 +120,29 @@ export default async function FaqPage() {
               </div>
             </section>
           ) : null}
+        </div>
+      </Section>
+      <Section eyebrow="Still have questions?" title="We’re here to help.">
+        <div className="grid gap-8 lg:grid-cols-[1fr_0.55fr]">
+          <p className="max-w-3xl text-lg leading-8 text-ink/75">
+            If you&apos;re unsure where to begin, reach out to TLC or start
+            with membership. Membership is free and gives adults 21+ access to
+            the next steps.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <Link
+              href="/membership"
+              className="inline-flex min-h-12 items-center justify-center rounded-md bg-gold px-6 py-3 font-ui text-sm font-semibold text-black transition hover:bg-gold/85"
+            >
+              Become a Member
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border border-gold px-6 py-3 font-ui text-sm font-semibold text-gold transition hover:bg-gold hover:text-black"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       </Section>
       <JsonLd

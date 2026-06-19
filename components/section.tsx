@@ -1,9 +1,11 @@
 export function Section({
+  id,
   eyebrow,
   title,
   children,
   tone = "paper"
 }: {
+  id?: string;
   eyebrow?: string;
   title?: string;
   children: React.ReactNode;
@@ -16,7 +18,7 @@ export function Section({
   };
 
   return (
-    <section className={`py-14 sm:py-20 ${tones[tone]}`}>
+    <section id={id} className={`py-14 sm:py-20 ${tones[tone]}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {eyebrow ? (
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-gold">

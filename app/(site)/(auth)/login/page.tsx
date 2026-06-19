@@ -37,8 +37,8 @@ export default async function LoginPage({
           Member Login
         </h1>
         <p className="mt-4 leading-7 text-ink/75">
-          Access account status, member resources, and member-only community
-          areas after your membership is active.
+          Log in to view your account status, member resources, and any
+          member-only areas available through The Living Church.
         </p>
         <form
           action="/auth/login"
@@ -85,7 +85,14 @@ export default async function LoginPage({
             Log in
           </button>
           <p className="text-sm text-ink/70">
-            New here? <Link href="/register" className="font-semibold text-river">Create an account</Link>
+            Not active yet? Create an account and complete the waiver process
+            to begin.
+          </p>
+          <p className="text-sm text-ink/70">
+            New to TLC?{" "}
+            <Link href="/register" className="font-semibold text-river">
+              Create a free account
+            </Link>
           </p>
         </form>
       </div>
