@@ -55,7 +55,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
       </div>
       {open ? (
         <nav
-          className="border-t border-creme/10 bg-black px-4 py-4 lg:hidden"
+          className="max-h-[calc(100dvh-65px)] overflow-y-auto overscroll-contain border-t border-creme/10 bg-black px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 [-webkit-overflow-scrolling:touch] lg:hidden"
           aria-label="Mobile primary"
         >
           <div className="mx-auto grid max-w-7xl gap-1">

@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { isMenuOpenForClientReview } from "@/lib/menu-gate";
 import { updateSession } from "@/lib/supabase/middleware";
 
 const protectedRoutes = [
@@ -10,9 +11,10 @@ const protectedRoutes = [
 
 export async function middleware(request: NextRequest) {
   const response = await updateSession(request);
-  const isProtected = protectedRoutes.some((route) =>
-    request.nextUrl.pathname.startsWith(route)
-  );
+  const pathname = request.nextUrl.pathname;
+  const isProtected =
+    protectedRoutes.some((route) => pathname.startsWith(route)) ||
+    (!isMenuOpenForClientReview() && pathname.startsWith("/menu"));
 
   if (!isProtected) return response;
 

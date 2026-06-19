@@ -26,6 +26,13 @@ cp .env.example .env.local
 
 3. Fill in Sanity, Supabase, and Smartwaiver values in `.env.local`.
 
+   The member menu is temporarily open for client review by default. To restore
+   the member gate after review, set:
+
+```bash
+MENU_OPEN_FOR_CLIENT_REVIEW=false
+```
+
 4. Run the site:
 
 ```bash

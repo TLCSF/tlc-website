@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MemberShell } from "@/components/member-shell";
 import { type CmsMenuProduct, getMemberMenuProducts } from "@/lib/cms";
 import { sampleProducts } from "@/lib/content";
+import { isMenuOpenForClientReview } from "@/lib/menu-gate";
 import { getCurrentProfile, isActiveMember } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -14,8 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function MenuPage() {
-  // Temporary client-review setting: set this back to false to restore the member gate.
-  const menuOpenForClientReview = true;
+  const menuOpenForClientReview = isMenuOpenForClientReview();
   const profile = await getCurrentProfile();
   const active = menuOpenForClientReview || isActiveMember(profile);
 
