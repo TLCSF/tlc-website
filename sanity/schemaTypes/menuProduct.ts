@@ -17,20 +17,18 @@ export const menuProduct = defineType({
     defineField({
       name: "displayCategory",
       title: "Display category",
-      description: "The visible menu grouping shown to members, such as Mushrooms, Chocolate, or Capsules & Microdose.",
+      description: "The visible menu grouping shown to members, such as Mushrooms, Exotics, Gummies, or Chocolate.",
       type: "string",
       options: {
         list: [
           "Mushrooms",
+          "Exotics",
+          "Gummies",
           "Chocolate",
-          "Capsules & Microdose",
-          "Gummies & Lozenges",
-          "Beverages & Pantry",
-          "Prepared Foods",
-          "Extracts",
-          "Sprays",
-          "Support",
-          "Education"
+          "Tinctures",
+          "Microdose Capsules",
+          "Tablets",
+          "Miscellaneous"
         ]
       }
     }),

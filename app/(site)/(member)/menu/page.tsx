@@ -90,22 +90,31 @@ function PublicMenuPreviewShell({ children }: { children: React.ReactNode }) {
 
 const categoryOrder = [
   "Mushrooms",
+  "Exotics",
+  "Gummies",
   "Chocolate",
-  "Capsules & Microdose",
-  "Gummies & Lozenges",
-  "Beverages & Pantry",
-  "Prepared Foods",
-  "Extracts",
-  "Sprays",
-  "Support",
-  "Education"
+  "Tinctures",
+  "Microdose Capsules",
+  "Tablets",
+  "Miscellaneous"
 ];
+
+const categoryAliases: Record<string, string> = {
+  "Capsules & Microdose": "Microdose Capsules",
+  "Gummies & Lozenges": "Gummies",
+  "Beverages & Pantry": "Miscellaneous",
+  "Prepared Foods": "Miscellaneous",
+  Extracts: "Tinctures",
+  Sprays: "Tinctures",
+  Support: "Miscellaneous",
+  Education: "Miscellaneous"
+};
 
 function groupMenuProducts(products: CmsMenuProduct[]) {
   const groups = new Map<string, CmsMenuProduct[]>();
 
   for (const product of products) {
-    const category = product.displayCategory || product.category || "Menu";
+    const category = getProductCategory(product);
     groups.set(category, [...(groups.get(category) || []), product]);
   }
 
@@ -132,8 +141,13 @@ function productKey(product: CmsMenuProduct) {
   return `${product.title}-${product.price || ""}-${product.servingDetails || ""}`;
 }
 
+function getProductCategory(product: CmsMenuProduct) {
+  const category = product.displayCategory || product.category || "Miscellaneous";
+  return categoryAliases[category] || category;
+}
+
 function MenuProductCard({ product }: { product: CmsMenuProduct }) {
-  const productCategory = product.displayCategory || product.category;
+  const productCategory = getProductCategory(product);
 
   return (
     <article className="overflow-hidden rounded-lg border border-ink/10 bg-paper shadow-sm">
