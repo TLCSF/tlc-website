@@ -60,6 +60,10 @@ function classifyProduct(product) {
     return "Tinctures";
   }
 
+  if (/\b(sanctified sacraments capsules?|natalensis capsules?)\b/.test(text)) {
+    return "Capsules";
+  }
+
   if (/\b(capsules?|caps\b|microdose|clarity caps|braveheart)\b/.test(text)) {
     return "Microdose Capsules";
   }
@@ -86,11 +90,19 @@ function classifyProduct(product) {
     return "Gummies";
   }
 
+  if (/\bvibrant minds?\b/.test(text)) {
+    return "Miscellaneous";
+  }
+
   if (/\b(chocolate|bar|mini hearts|happy bars|mind.?s eye|day trip|nirvana|stoned ape|botanical tiger|odyssey)\b/.test(text)) {
     return "Chocolate";
   }
 
-  if (/\b(tea|cacao|elixirs?|beverages?|honey|majic|majun|granola|date ball|mystical minds?)\b/.test(text)) {
+  if (/\b(tea|cacao|elixirs?|beverages?|mystical minds?)\b/.test(text)) {
+    return "Beverages";
+  }
+
+  if (/\b(honey|majic|majun|granola|date ball)\b/.test(text)) {
     return "Miscellaneous";
   }
 
