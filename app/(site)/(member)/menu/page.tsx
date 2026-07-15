@@ -74,11 +74,11 @@ function MenuProductSections({
 
 function SacramentMenuNotice() {
   return (
-    <div className="max-w-3xl font-ui text-xs leading-6 text-ink/55 sm:text-sm">
-      <p>All taxes are included.</p>
+    <div className="max-w-5xl font-ui text-xs leading-6 text-ink/55 sm:text-sm">
       <p>
-        Sacraments are never for sale but with purchase of a prayer card or
-        crystal you may be eligible to receive sacraments for free.
+        All taxes are included. Sacraments are never for sale but with purchase
+        of a prayer card or crystal you may be eligible to receive sacraments
+        for free.
       </p>
     </div>
   );
