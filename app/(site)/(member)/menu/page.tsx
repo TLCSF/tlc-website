@@ -77,8 +77,8 @@ function SacramentMenuNotice() {
     <div className="max-w-3xl font-ui text-xs leading-6 text-ink/55 sm:text-sm">
       <p>All taxes are included.</p>
       <p>
-        Sacraments are never for sale, but may be available for free with
-        purchase of a prayer card or crystal.
+        Sacraments are never for sale but with purchase of a prayer card or
+        crystal you may be eligible to receive sacraments for free.
       </p>
     </div>
   );
