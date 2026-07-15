@@ -10,7 +10,7 @@ import { getCurrentProfile, isActiveMember } from "@/lib/supabase/server";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Member Sacrament Menu Access",
+  title: "Sacrament Menu Access",
   description: "Learn how active TLC members access the sacrament menu."
 };
 
@@ -36,7 +36,7 @@ export default async function MenuPage() {
   }
 
   return (
-    <MemberShell title="Member Sacrament Menu">
+    <MemberShell title="Sacrament Menu">
       {menuContent}
     </MemberShell>
   );
@@ -93,7 +93,7 @@ function PublicMenuPreviewShell({ children }: { children: React.ReactNode }) {
             Member area
           </p>
           <h1 className="mt-2 font-serif text-4xl leading-tight sm:text-5xl">
-            Member Sacrament Menu
+            Sacrament Menu
           </h1>
         </div>
         {children}
