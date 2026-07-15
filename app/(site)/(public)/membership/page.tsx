@@ -66,7 +66,7 @@ export default function MembershipPage() {
     {
       question: "How do I access the sacrament menu?",
       answer:
-        "Log in with an active member account. If your account is not active yet, the menu remains locked and you will be directed back to the membership pathway."
+        "Log in with an active member account. If your account is not active yet, the sacrament menu remains locked and you will be directed back to the membership pathway."
     },
     {
       question: "How does TLC confirm my membership?",

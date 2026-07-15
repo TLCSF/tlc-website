@@ -2,14 +2,14 @@ import { defineField, defineType } from "sanity";
 
 export const menuProduct = defineType({
   name: "menuProduct",
-  title: "Menu Products",
+  title: "Sacrament Menu Products",
   type: "document",
   fields: [
     defineField({ name: "title", title: "Product name", type: "string", validation: (Rule) => Rule.required() }),
     defineField({ name: "slug", title: "URL", type: "slug", options: { source: "title" } }),
     defineField({
       name: "category",
-      title: "Menu type",
+      title: "Sacrament menu type",
       type: "string",
       options: { list: ["Sacrament", "Education", "Community", "Support"] },
       initialValue: "Sacrament"
@@ -17,7 +17,7 @@ export const menuProduct = defineType({
     defineField({
       name: "displayCategory",
       title: "Display category",
-      description: "The visible menu grouping shown to members, such as Mushrooms, Exotics, Gummies, or Chocolate.",
+      description: "The visible sacrament menu grouping shown to members, such as Mushrooms, Exotics, Gummies, or Chocolate.",
       type: "string",
       options: {
         list: [
@@ -27,7 +27,9 @@ export const menuProduct = defineType({
           "Chocolate",
           "Tinctures",
           "Microdose Capsules",
+          "Capsules",
           "Tablets",
+          "Beverages",
           "Miscellaneous"
         ]
       }

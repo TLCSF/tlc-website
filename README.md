@@ -26,7 +26,7 @@ cp .env.example .env.local
 
 3. Fill in Sanity, Supabase, and Smartwaiver values in `.env.local`.
 
-   The member menu is temporarily open for client review by default. To restore
+   The member sacrament menu is temporarily open for client review by default. To restore
    the member gate after review, set:
 
 ```bash
@@ -51,7 +51,7 @@ npm run dev
    - FAQs
    - Events
    - Announcements
-   - Menu products and availability
+   - Sacrament menu products and availability
    - Site settings
 
 ## Supabase Setup
@@ -96,7 +96,7 @@ Members should use the same email address for their TLC account and waiver.
 - Phase 1 complete: scaffold, design system, layout, navigation, footer, age gate.
 - Phase 2 complete: public pages, education pages, Sanity schemas, CMS fetch helpers.
 - Phase 3 complete: Supabase auth forms, account status, protected member routes.
-- Phase 4 complete: events, announcements/menu schemas, member menu, staff member search, Smartwaiver link and membership activation webhook.
+- Phase 4 complete: events, announcements/menu schemas, member sacrament menu, staff member search, Smartwaiver link and membership activation webhook.
 - Phase 5 complete: metadata, sitemap, robots, schema markup, accessibility-minded components, setup docs.
 
 ## Notes

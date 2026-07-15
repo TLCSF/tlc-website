@@ -296,9 +296,9 @@ export const faqs = [
   },
   {
     category: "Sacraments",
-    question: "Why is the menu member-only?",
+    question: "Why is the sacrament menu member-only?",
     answer:
-      "The menu is limited to active members because TLC treats member-only sacramental offerings as part of a structured church pathway, not a retail-first experience. Membership registration and waiver completion come first."
+      "The sacrament menu is limited to active members because TLC treats member-only sacramental offerings as part of a structured church pathway, not a retail-first experience. Membership registration and waiver completion come first."
   },
   {
     category: "Sacraments",
@@ -436,7 +436,7 @@ export const faqs = [
     category: "Member Access",
     question: "How do I access the sacrament menu?",
     answer:
-      "Create an account, complete membership registration, and sign the digital waiver. Once your membership is active, you can log in and view the member-only menu."
+      "Create an account, complete membership registration, and sign the digital waiver. Once your membership is active, you can log in and view the member-only sacrament menu."
   },
   {
     category: "Member Access",
@@ -452,7 +452,7 @@ export const faqs = [
   },
   {
     category: "Member Access",
-    question: "Can I view the menu before my membership is active?",
+    question: "Can I view the sacrament menu before my membership is active?",
     answer:
       "No. The sacrament menu is reserved for active members. Prospective members can still explore public education pages and membership information while completing the membership process."
   },
@@ -470,7 +470,7 @@ export const faqs = [
   },
   {
     category: "Login Help",
-    question: "What should I do if my login works but I cannot see the menu?",
+    question: "What should I do if my login works but I cannot see the sacrament menu?",
     answer:
       "Your membership may still be pending, your waiver may not be matched, or staff may still need to approve your account. Check your account status first, then contact TLC if anything looks incorrect."
   },

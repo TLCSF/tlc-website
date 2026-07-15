@@ -34,11 +34,11 @@ export const siteConfig = {
       ]
     },
     { href: "/membership", label: "Membership" },
-    { href: "/menu", label: "Menu" },
+    { href: "/menu", label: "Sacrament Menu" },
     { href: "/contact", label: "Contact" }
   ],
   memberNav: [
-    { href: "/menu", label: "Menu" },
+    { href: "/menu", label: "Sacrament Menu" },
     { href: "/member-resources", label: "Resources" },
     { href: "/member-community", label: "Community" },
     { href: "/account", label: "Account" }

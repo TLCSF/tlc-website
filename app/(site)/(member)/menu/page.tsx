@@ -10,7 +10,7 @@ import { getCurrentProfile, isActiveMember } from "@/lib/supabase/server";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Member Menu Access",
+  title: "Member Sacrament Menu Access",
   description: "Learn how active TLC members access the sacrament menu."
 };
 
@@ -36,7 +36,7 @@ export default async function MenuPage() {
   }
 
   return (
-    <MemberShell title="Member Menu">
+    <MemberShell title="Member Sacrament Menu">
       {menuContent}
     </MemberShell>
   );
@@ -49,6 +49,7 @@ function MenuProductSections({
 }) {
   return (
     <div className="grid gap-12">
+      <SacramentMenuNotice />
       {groupedProducts.map(([category, categoryProducts]) => (
         <section key={category} aria-labelledby={categoryId(category)}>
           <div className="rounded-lg bg-black px-6 py-10 text-center shadow-soft sm:py-12">
@@ -66,6 +67,19 @@ function MenuProductSections({
           </div>
         </section>
       ))}
+      <SacramentMenuNotice />
+    </div>
+  );
+}
+
+function SacramentMenuNotice() {
+  return (
+    <div className="max-w-3xl font-ui text-xs leading-6 text-ink/55 sm:text-sm">
+      <p>All taxes are included.</p>
+      <p>
+        Sacraments are never for sale, but may be available for free with
+        purchase of a prayer card or crystal.
+      </p>
     </div>
   );
 }
@@ -79,7 +93,7 @@ function PublicMenuPreviewShell({ children }: { children: React.ReactNode }) {
             Member area
           </p>
           <h1 className="mt-2 font-serif text-4xl leading-tight sm:text-5xl">
-            Member Menu
+            Member Sacrament Menu
           </h1>
         </div>
         {children}
@@ -95,14 +109,16 @@ const categoryOrder = [
   "Chocolate",
   "Tinctures",
   "Microdose Capsules",
+  "Capsules",
   "Tablets",
+  "Beverages",
   "Miscellaneous"
 ];
 
 const categoryAliases: Record<string, string> = {
   "Capsules & Microdose": "Microdose Capsules",
   "Gummies & Lozenges": "Gummies",
-  "Beverages & Pantry": "Miscellaneous",
+  "Beverages & Pantry": "Beverages",
   "Prepared Foods": "Miscellaneous",
   Extracts: "Tinctures",
   Sprays: "Tinctures",
@@ -193,13 +209,6 @@ function MenuProductCard({ product }: { product: CmsMenuProduct }) {
             ))}
           </ul>
         ) : null}
-        <p
-          className={`mt-5 inline-flex rounded-full px-3 py-1 font-ui text-xs font-semibold uppercase tracking-[0.14em] ${
-            product.available ? "bg-linen text-ink" : "bg-ink/10 text-ink/60"
-          }`}
-        >
-          {product.available ? "Available" : "Unavailable"}
-        </p>
       </div>
     </article>
   );
@@ -218,7 +227,7 @@ function MenuAccessPage() {
       <section className="mx-auto grid min-h-[calc(100dvh-73px)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">
-            Member menu
+            Member sacrament menu
           </p>
           <h1 className="mt-3 max-w-3xl font-serif text-5xl font-semibold leading-[0.95] text-ink sm:text-6xl lg:text-7xl">
             Membership Required
