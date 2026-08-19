@@ -61,7 +61,6 @@ export const menuProduct = defineType({
       type: "url",
       readOnly: true
     }),
-    defineField({ name: "available", title: "Available", type: "boolean", initialValue: true }),
     defineField({ name: "featured", title: "Featured", type: "boolean", initialValue: false }),
     defineField({ name: "memberOnly", title: "Member only", type: "boolean", initialValue: true }),
     defineField({ name: "published", title: "Published", type: "boolean", initialValue: true }),
