@@ -208,7 +208,9 @@ function MenuProductCard({ product }: { product: CmsMenuProduct }) {
           </p>
         ) : null}
         {product.description ? (
-          <p className="mt-3 leading-7 text-ink/75">{product.description}</p>
+          <p className="mt-3 whitespace-pre-line leading-7 text-ink/75">
+            {product.description}
+          </p>
         ) : null}
         {product.variants?.length ? (
           <ul className="mt-4 grid gap-1 text-sm leading-6 text-ink/70">
