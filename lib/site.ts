@@ -21,6 +21,10 @@ export const siteConfig = {
           href: "/education/what-is-an-entheogenic-church",
           label: "What Is an Entheogenic Church?"
         },
+        {
+          href: "/religious-sacrament-notice",
+          label: "Religious Sacrament Notice"
+        },
         { href: "/faq", label: "FAQ" },
         { href: "/blog", label: "Blog" }
       ]

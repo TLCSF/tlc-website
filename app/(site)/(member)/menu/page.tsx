@@ -80,14 +80,6 @@ function SacramentMenuNotice() {
         of a prayer card or crystal you may be eligible to receive sacraments
         for free.
       </p>
-      <p className="mt-1">
-        <Link
-          href="/religious-sacrament-notice"
-          className="font-semibold text-gold underline-offset-4 hover:underline"
-        >
-          Religious Sacrament Notice
-        </Link>
-      </p>
     </div>
   );
 }
