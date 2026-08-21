@@ -43,8 +43,6 @@ export const siteConfig = {
   ],
   memberNav: [
     { href: "/menu", label: "Sacrament Menu" },
-    { href: "/member-resources", label: "Resources" },
-    { href: "/member-community", label: "Community" },
     { href: "/account", label: "Account" }
   ],
   organizationSchema: {
