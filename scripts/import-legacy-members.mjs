@@ -8,7 +8,13 @@ const inputPath = args.find((argument) => !argument.startsWith("--"));
 const commit = args.includes("--commit");
 const limitArgument = args.find((argument) => argument.startsWith("--limit="));
 const onlyEmailArgument = args.find((argument) => argument.startsWith("--email="));
+const concurrencyArgument = args.find((argument) =>
+  argument.startsWith("--concurrency=")
+);
 const limit = limitArgument ? Number(limitArgument.split("=")[1]) : null;
+const concurrency = concurrencyArgument
+  ? Number(concurrencyArgument.split("=")[1])
+  : 5;
 const onlyEmail = onlyEmailArgument
   ? normalizeEmail(onlyEmailArgument.slice("--email=".length))
   : null;
@@ -21,6 +27,9 @@ if (!inputPath || !existsSync(inputPath)) {
 
 if (limit !== null && (!Number.isInteger(limit) || limit < 1)) {
   throw new Error("--limit must be a positive integer.");
+}
+if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 10) {
+  throw new Error("--concurrency must be an integer from 1 through 10.");
 }
 
 const parsedRows = parseCsv(readFileSync(inputPath, "utf8"));
@@ -69,12 +78,11 @@ const usersByEmail = new Map(
     .map((user) => [normalizeEmail(user.email), user])
 );
 
-let created = 0;
-let updated = 0;
-let skippedPrivileged = 0;
-let failed = 0;
+const totals = { created: 0, updated: 0, skippedPrivileged: 0, failed: 0 };
+let nextIndex = 0;
+let processed = 0;
 
-for (const [index, member] of selectedMembers.entries()) {
+async function importMember(member, index) {
   try {
     let user = usersByEmail.get(member.email);
     let wasCreated = false;
@@ -103,8 +111,7 @@ for (const [index, member] of selectedMembers.entries()) {
     if (profileReadError) throw profileReadError;
 
     if (["staff", "admin"].includes(currentProfile?.role || "")) {
-      skippedPrivileged += 1;
-      continue;
+      return "skippedPrivileged";
     }
 
     const { error: profileError } = await supabase.from("profiles").upsert(
@@ -146,30 +153,47 @@ for (const [index, member] of selectedMembers.entries()) {
       if (eventError) throw eventError;
     }
 
-    if (wasCreated) created += 1;
-    else updated += 1;
+    return wasCreated ? "created" : "updated";
   } catch (error) {
-    failed += 1;
     console.error(
       `Failed record ${index + 1}/${selectedMembers.length}:`,
       error instanceof Error ? error.message : error
     );
-  }
-
-  if ((index + 1) % 100 === 0 || index + 1 === selectedMembers.length) {
-    console.log(`Processed ${index + 1}/${selectedMembers.length}`);
+    return "failed";
   }
 }
 
+async function worker() {
+  while (true) {
+    const index = nextIndex;
+    nextIndex += 1;
+    if (index >= selectedMembers.length) return;
+
+    const result = await importMember(selectedMembers[index], index);
+    totals[result] += 1;
+    processed += 1;
+    if (processed % 100 === 0 || processed === selectedMembers.length) {
+      console.log(`Processed ${processed}/${selectedMembers.length}`);
+    }
+  }
+}
+
+await Promise.all(
+  Array.from(
+    { length: Math.min(concurrency, selectedMembers.length) },
+    () => worker()
+  )
+);
+
 console.log(
   JSON.stringify(
-    { created, updated, skippedPrivileged, failed, emailsSent: 0 },
+    { ...totals, emailsSent: 0 },
     null,
     2
   )
 );
 
-if (failed > 0) process.exitCode = 1;
+if (totals.failed > 0) process.exitCode = 1;
 
 function loadLocalEnv() {
   for (const fileName of [".env.local", ".env"]) {
