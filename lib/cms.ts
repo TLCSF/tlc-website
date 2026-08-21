@@ -19,6 +19,7 @@ export type CmsMenuProduct = {
   title: string;
   category?: string;
   displayCategory?: string;
+  additionalDisplayCategories?: string[];
   price?: string;
   description?: string;
   servingDetails?: string;
@@ -59,7 +60,7 @@ export async function getPublishedFaqs() {
 export async function getMemberMenuProducts() {
   return sanityFetch<CmsMenuProduct[]>({
     query:
-      '*[_type == "menuProduct" && published == true && memberOnly == true] | order(sortOrder asc) {title, category, displayCategory, price, description, servingDetails, variants, available, "imageUrl": image.asset->url, "imageAlt": image.alt}'
+      '*[_type == "menuProduct" && published == true && memberOnly == true] | order(sortOrder asc) {title, category, displayCategory, additionalDisplayCategories, price, description, servingDetails, variants, available, "imageUrl": image.asset->url, "imageAlt": image.alt}'
   });
 }
 

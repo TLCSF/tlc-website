@@ -62,7 +62,11 @@ function MenuProductSections({
           </div>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {categoryProducts.map((product) => (
-              <MenuProductCard key={productKey(product)} product={product} />
+              <MenuProductCard
+                key={productKey(product)}
+                product={product}
+                displayCategory={category}
+              />
             ))}
           </div>
         </section>
@@ -130,8 +134,9 @@ function groupMenuProducts(products: CmsMenuProduct[]) {
   const groups = new Map<string, CmsMenuProduct[]>();
 
   for (const product of products) {
-    const category = getProductCategory(product);
-    groups.set(category, [...(groups.get(category) || []), product]);
+    for (const category of getProductCategories(product)) {
+      groups.set(category, [...(groups.get(category) || []), product]);
+    }
   }
 
   return Array.from(groups.entries()).sort(([a], [b]) => {
@@ -157,14 +162,24 @@ function productKey(product: CmsMenuProduct) {
   return `${product.title}-${product.price || ""}-${product.servingDetails || ""}`;
 }
 
-function getProductCategory(product: CmsMenuProduct) {
-  const category = product.displayCategory || product.category || "Miscellaneous";
-  return categoryAliases[category] || category;
+function getProductCategories(product: CmsMenuProduct) {
+  const primaryCategory =
+    product.displayCategory || product.category || "Miscellaneous";
+  const categories = [
+    primaryCategory,
+    ...(product.additionalDisplayCategories || [])
+  ].map((category) => categoryAliases[category] || category);
+
+  return [...new Set(categories)];
 }
 
-function MenuProductCard({ product }: { product: CmsMenuProduct }) {
-  const productCategory = getProductCategory(product);
-
+function MenuProductCard({
+  product,
+  displayCategory
+}: {
+  product: CmsMenuProduct;
+  displayCategory: string;
+}) {
   return (
     <article className="overflow-hidden rounded-lg border border-ink/10 bg-paper shadow-sm">
       {product.imageUrl ? (
@@ -179,9 +194,9 @@ function MenuProductCard({ product }: { product: CmsMenuProduct }) {
         </div>
       ) : null}
       <div className="p-5 sm:p-6">
-        {productCategory ? (
+        {displayCategory ? (
           <p className="mb-3 font-ui text-xs font-semibold uppercase tracking-[0.16em] text-gold">
-            {productCategory}
+            {displayCategory}
           </p>
         ) : null}
         <div className="flex items-start justify-between gap-4">

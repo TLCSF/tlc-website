@@ -1,5 +1,18 @@
 import { defineField, defineType } from "sanity";
 
+const displayCategories = [
+  "Mushrooms",
+  "Exotics",
+  "Gummies",
+  "Chocolate",
+  "Tinctures",
+  "Microdose Capsules",
+  "Capsules",
+  "Tablets",
+  "Beverages",
+  "Miscellaneous"
+];
+
 export const menuProduct = defineType({
   name: "menuProduct",
   title: "Sacrament Menu Products",
@@ -19,20 +32,15 @@ export const menuProduct = defineType({
       title: "Display category",
       description: "The visible sacrament menu grouping shown to members, such as Mushrooms, Exotics, Gummies, or Chocolate.",
       type: "string",
-      options: {
-        list: [
-          "Mushrooms",
-          "Exotics",
-          "Gummies",
-          "Chocolate",
-          "Tinctures",
-          "Microdose Capsules",
-          "Capsules",
-          "Tablets",
-          "Beverages",
-          "Miscellaneous"
-        ]
-      }
+      options: { list: displayCategories }
+    }),
+    defineField({
+      name: "additionalDisplayCategories",
+      title: "Additional display categories",
+      description: "Optional additional menu sections where this product should also appear.",
+      type: "array",
+      of: [{ type: "string", options: { list: displayCategories } }],
+      validation: (Rule) => Rule.unique()
     }),
     defineField({ name: "price", title: "Price", type: "string" }),
     defineField({ name: "description", title: "Description", type: "text" }),
