@@ -50,8 +50,13 @@ function MenuProductSections({
   return (
     <div className="grid gap-12">
       <SacramentMenuNotice />
+      <CategoryNavigation categories={groupedProducts.map(([category]) => category)} />
       {groupedProducts.map(([category, categoryProducts]) => (
-        <section key={category} aria-labelledby={categoryId(category)}>
+        <section
+          key={category}
+          aria-labelledby={categoryId(category)}
+          className="scroll-mt-24"
+        >
           <div className="rounded-lg bg-black px-6 py-10 text-center shadow-soft sm:py-12">
             <h2
               id={categoryId(category)}
@@ -69,10 +74,43 @@ function MenuProductSections({
               />
             ))}
           </div>
+          <div className="mt-6 text-right">
+            <Link
+              href="#menu-categories"
+              className="font-ui text-sm font-semibold text-gold underline-offset-4 hover:underline"
+            >
+              Back to categories
+            </Link>
+          </div>
         </section>
       ))}
       <SacramentMenuNotice />
     </div>
+  );
+}
+
+function CategoryNavigation({ categories }: { categories: string[] }) {
+  return (
+    <nav
+      id="menu-categories"
+      aria-label="Browse sacrament menu categories"
+      className="scroll-mt-24 rounded-lg border border-ink/10 bg-paper p-5 shadow-sm sm:p-6"
+    >
+      <p className="font-ui text-sm font-semibold uppercase tracking-[0.16em] text-gold">
+        Browse by category
+      </p>
+      <div className="mt-4 flex gap-3 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0">
+        {categories.map((category) => (
+          <Link
+            key={category}
+            href={`#${categoryId(category)}`}
+            className="shrink-0 rounded-full border border-ink/15 bg-linen px-4 py-2 font-ui text-sm font-semibold text-ink transition hover:border-gold hover:text-gold"
+          >
+            {category}
+          </Link>
+        ))}
+      </div>
+    </nav>
   );
 }
 
