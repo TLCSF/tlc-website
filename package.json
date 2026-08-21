@@ -9,6 +9,7 @@
     "lint": "eslint app components lib sanity middleware.ts next.config.mjs",
     "typecheck": "next typegen && tsc --noEmit",
     "import:menu": "node scripts/import-menu-products.mjs",
+    "import:legacy-members": "node scripts/import-legacy-members.mjs",
     "upgrade:menu-images": "node scripts/upgrade-menu-images.mjs"
   },
   "dependencies": {

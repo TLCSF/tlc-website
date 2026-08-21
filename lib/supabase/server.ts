@@ -125,7 +125,10 @@ export function isActiveMember(profile: {
   const hasRole = ["member_active", "staff", "admin"].includes(
     profile.role || ""
   );
-  return hasRole && profile.approval === "approved" && profile.waiver === "completed";
+  const waiverAccepted = ["completed", "legacy_verified"].includes(
+    profile.waiver || ""
+  );
+  return hasRole && profile.approval === "approved" && waiverAccepted;
 }
 
 export function isStaff(profile: { role?: string | null } | null) {

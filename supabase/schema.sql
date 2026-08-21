@@ -3,7 +3,7 @@
 create extension if not exists "uuid-ossp";
 
 create type member_role as enum ('member_pending', 'member_active', 'staff', 'admin');
-create type waiver_status as enum ('not_started', 'started', 'completed', 'expired', 'manual_review');
+create type waiver_status as enum ('not_started', 'started', 'completed', 'legacy_verified', 'expired', 'manual_review');
 create type approval_status as enum ('pending', 'approved', 'rejected', 'suspended');
 
 create table public.profiles (

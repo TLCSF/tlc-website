@@ -17,7 +17,14 @@ export default async function AccountPage() {
     <MemberShell title="Account Status" allowPending>
       <section className="grid gap-4 rounded-lg bg-paper p-6 shadow-sm md:grid-cols-2">
         <Status label="Membership role" value={profile?.role || "Not connected"} />
-        <Status label="Waiver" value={profile?.waiver || "Not started"} />
+        <Status
+          label="Waiver"
+          value={
+            profile?.waiver === "legacy_verified"
+              ? "Existing waiver recognized"
+              : profile?.waiver || "Not started"
+          }
+        />
       </section>
       {profile ? (
         <section className="mt-4 rounded-lg bg-paper p-5 text-sm text-ink/70">
