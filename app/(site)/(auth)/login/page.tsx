@@ -40,10 +40,24 @@ export default async function LoginPage({
           Log in to view your account status, member resources, and any
           member-only areas available through The Living Church.
         </p>
+        <aside className="mt-8 rounded-lg border border-clay/30 bg-clay/15 p-5">
+          <p className="font-semibold">Already a TLC member?</p>
+          <p className="mt-2 leading-7 text-ink/75">
+            Our new website requires existing members to create a new password
+            the first time they visit. Your membership and existing waiver are
+            still valid—you do not need to sign the waiver again.
+          </p>
+          <Link
+            href="/forgot-password"
+            className="mt-3 inline-block font-semibold text-river underline underline-offset-4"
+          >
+            Set up your new password
+          </Link>
+        </aside>
         <form
           action="/auth/login"
           method="post"
-          className="mt-8 grid gap-4 rounded-lg bg-paper p-6"
+          className="mt-6 grid gap-4 rounded-lg bg-paper p-6"
         >
           <input type="hidden" name="next" value={nextPath} />
           <div className="grid gap-2">
@@ -84,6 +98,12 @@ export default async function LoginPage({
           <button className="min-h-12 rounded-md bg-ink px-5 py-3 font-semibold text-paper hover:bg-moss">
             Log in
           </button>
+          <p className="text-sm text-ink/70">
+            Forgot your password?{" "}
+            <Link href="/forgot-password" className="font-semibold text-river">
+              Reset it here
+            </Link>
+          </p>
           <p className="text-sm text-ink/70">
             Not active yet? Create an account and complete the waiver process
             to begin.
