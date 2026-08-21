@@ -40,7 +40,7 @@ export default async function AccountPage() {
             ? "Your account is active. Member-only pages are available from the navigation above."
             : "Complete the digital waiver using the same email address as your TLC account. Member access becomes available after your registration and waiver are connected."}
         </p>
-        {process.env.NEXT_PUBLIC_SMARTWAIVER_URL ? (
+        {!active && process.env.NEXT_PUBLIC_SMARTWAIVER_URL ? (
           <a
             href={process.env.NEXT_PUBLIC_SMARTWAIVER_URL}
             className="mt-5 inline-flex min-h-12 items-center rounded-md bg-ink px-5 py-3 font-semibold text-paper hover:bg-moss"
