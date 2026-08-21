@@ -11,7 +11,6 @@ export default function ReligiousSacramentNoticePage() {
   return (
     <main>
       <Section
-        eyebrow="Member notice"
         title="Religious Sacrament Notice"
         tone="linen"
       >
