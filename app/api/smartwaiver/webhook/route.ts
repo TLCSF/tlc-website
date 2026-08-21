@@ -211,7 +211,10 @@ export async function POST(request: Request) {
       waiverId,
       webhookEvent
     });
-    return NextResponse.json({ received: true, matched: false, reason: "email_not_verified" });
+    return NextResponse.json(
+      { received: true, matched: false, reason: "email_not_verified" },
+      { status: 503 }
+    );
   }
 
   const email = extractEmail(waiver);
