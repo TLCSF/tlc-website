@@ -74,8 +74,8 @@ Gated pages require:
 Current membership flow:
 
 1. Set `NEXT_PUBLIC_SMARTWAIVER_URL` to the live waiver URL.
-2. Add Smartwaiver webhook credentials in production.
-3. Configure Smartwaiver to send completed waiver events to `/api/smartwaiver/webhook`.
+2. Add `SMARTWAIVER_API_KEY` and `SMARTWAIVER_WEBHOOK_SECRET` as server-only production environment variables.
+3. Configure Smartwaiver to send completed waiver events to `/api/smartwaiver/webhook?key=SMARTWAIVER_WEBHOOK_SECRET`, substituting the configured secret value.
 4. The webhook matches the signer email to `profiles.email`.
 5. Matched profiles are marked `member_active`, `approved`, and `completed`.
 
