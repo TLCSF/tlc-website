@@ -54,12 +54,13 @@ function MenuProductSections({
       {groupedProducts.map(([category, categoryProducts]) => (
         <section
           key={category}
-          aria-labelledby={categoryId(category)}
+          id={categoryId(category)}
+          aria-labelledby={`${categoryId(category)}-heading`}
           className="scroll-mt-24"
         >
           <div className="rounded-lg bg-black px-6 py-10 text-center shadow-soft sm:py-12">
             <h2
-              id={categoryId(category)}
+              id={`${categoryId(category)}-heading`}
               className="font-serif text-5xl font-semibold leading-none text-creme sm:text-6xl"
             >
               {category}
