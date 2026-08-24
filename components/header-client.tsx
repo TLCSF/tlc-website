@@ -8,6 +8,27 @@ import { siteConfig } from "@/lib/site";
 
 export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
   const [open, setOpen] = useState(false);
+  const [expandedMobileItems, setExpandedMobileItems] = useState<string[]>([]);
+
+  function closeMobileNav() {
+    setOpen(false);
+    setExpandedMobileItems([]);
+  }
+
+  function toggleMobileNav() {
+    setOpen((value) => {
+      if (value) setExpandedMobileItems([]);
+      return !value;
+    });
+  }
+
+  function toggleMobileItem(href: string) {
+    setExpandedMobileItems((items) =>
+      items.includes(href)
+        ? items.filter((item) => item !== href)
+        : [...items, href]
+    );
+  }
 
   const authLinks = isLoggedIn
     ? [{ href: "/account", label: "Account" }]
@@ -62,7 +83,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
           className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-creme/30 text-creme lg:hidden"
           aria-label="Open navigation"
           aria-expanded={open}
-          onClick={() => setOpen((value) => !value)}
+          onClick={toggleMobileNav}
         >
           {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
@@ -75,27 +96,57 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
           <div className="mx-auto grid max-w-7xl gap-1">
             {siteConfig.nav.map((item) => (
               <div key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block rounded-md px-2 py-3 font-semibold text-creme"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
                 {"children" in item && item.children ? (
-                  <div className="grid gap-1 pb-2 pl-4">
-                    {item.children.map((child) => (
+                  <>
+                    <div className="flex items-center">
                       <Link
-                        key={child.href}
-                        href={child.href}
-                        className="rounded-md px-2 py-2 text-sm font-semibold text-creme/75"
-                        onClick={() => setOpen(false)}
+                        href={item.href}
+                        className="min-w-0 flex-1 rounded-md px-2 py-3 font-semibold text-creme"
+                        onClick={closeMobileNav}
                       >
-                        {child.label}
+                        {item.label}
                       </Link>
-                    ))}
-                  </div>
-                ) : null}
+                      <button
+                        type="button"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-md text-creme/80"
+                        aria-label={`Toggle ${item.label} submenu`}
+                        aria-expanded={expandedMobileItems.includes(item.href)}
+                        onClick={() => toggleMobileItem(item.href)}
+                      >
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${
+                            expandedMobileItems.includes(item.href)
+                              ? "rotate-180"
+                              : ""
+                          }`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
+                    {expandedMobileItems.includes(item.href) ? (
+                      <div className="grid gap-1 pb-2 pl-4">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="rounded-md px-2 py-2 text-sm font-semibold text-creme/75"
+                            onClick={closeMobileNav}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="block rounded-md px-2 py-3 font-semibold text-creme"
+                    onClick={closeMobileNav}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </div>
             ))}
             {authLinks.map((item) => (
@@ -103,7 +154,7 @@ export function HeaderClient({ isLoggedIn }: { isLoggedIn: boolean }) {
                 key={item.href}
                 href={item.href}
                 className="rounded-md px-2 py-3 font-semibold text-creme"
-                onClick={() => setOpen(false)}
+                onClick={closeMobileNav}
               >
                 {item.label}
               </Link>
