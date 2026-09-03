@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { ImageFeature } from "@/components/image-feature";
@@ -67,6 +68,17 @@ export default async function EventsPage() {
         <div className="grid gap-4 md:grid-cols-2">
           {events.map((event) => (
             <article key={event.title} className="rounded-lg border border-ink/10 bg-paper p-6">
+              {event.imageUrl ? (
+                <div className="relative mb-5 aspect-[16/9] overflow-hidden rounded-md bg-linen">
+                  <Image
+                    src={event.imageUrl}
+                    alt={event.imageAlt || event.title}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-contain"
+                  />
+                </div>
+              ) : null}
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-gold">
                 {formatEventDate(event.date)}
               </p>

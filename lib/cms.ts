@@ -7,6 +7,8 @@ export type CmsEvent = {
   startTime?: string;
   endTime?: string;
   location?: string;
+  imageUrl?: string;
+  imageAlt?: string;
   description?: string;
   registrationLink?: string;
   membersOnly?: boolean;
@@ -49,7 +51,7 @@ export type CmsBlogPost = {
 export async function getPublishedEvents() {
   return sanityFetch<CmsEvent[]>({
     query:
-      '*[_type == "event" && published == true] | order(date asc) {title, date, startTime, endTime, location, description, registrationLink, membersOnly}'
+      '*[_type == "event" && published == true] | order(date asc) {title, date, startTime, endTime, location, "imageUrl": image.asset->url, "imageAlt": image.alt, description, registrationLink, membersOnly}'
   });
 }
 
