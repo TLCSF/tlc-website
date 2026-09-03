@@ -7,7 +7,12 @@ export const event = defineType({
   fields: [
     defineField({ name: "title", title: "Event title", type: "string", validation: (Rule) => Rule.required() }),
     defineField({ name: "slug", title: "URL", type: "slug", options: { source: "title" } }),
-    defineField({ name: "date", title: "Date", type: "date" }),
+    defineField({
+      name: "date",
+      title: "Date",
+      type: "date",
+      options: { dateFormat: "MM-DD-YYYY" }
+    }),
     defineField({ name: "startTime", title: "Start time", type: "string" }),
     defineField({ name: "endTime", title: "End time", type: "string" }),
     defineField({ name: "location", title: "Location", type: "string" }),

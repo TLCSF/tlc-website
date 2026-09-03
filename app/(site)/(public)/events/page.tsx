@@ -68,7 +68,7 @@ export default async function EventsPage() {
           {events.map((event) => (
             <article key={event.title} className="rounded-lg border border-ink/10 bg-paper p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-gold">
-                {event.date || "Date to be announced"}
+                {formatEventDate(event.date)}
               </p>
               <h2 className="font-ui mt-3 text-2xl font-semibold">{event.title}</h2>
               {event.startTime || event.endTime || event.location ? (
@@ -141,4 +141,14 @@ export default async function EventsPage() {
       </Section>
     </main>
   );
+}
+
+function formatEventDate(date?: string) {
+  if (!date) return "Date to be announced";
+
+  const isoDate = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!isoDate) return date;
+
+  const [, year, month, day] = isoDate;
+  return `${month}-${day}-${year}`;
 }
