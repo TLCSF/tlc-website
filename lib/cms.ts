@@ -4,6 +4,9 @@ import type { PortableTextBlock } from "@portabletext/react";
 export type CmsEvent = {
   title: string;
   date?: string;
+  startTime?: string;
+  endTime?: string;
+  location?: string;
   description?: string;
   registrationLink?: string;
   membersOnly?: boolean;
@@ -46,7 +49,7 @@ export type CmsBlogPost = {
 export async function getPublishedEvents() {
   return sanityFetch<CmsEvent[]>({
     query:
-      '*[_type == "event" && published == true] | order(date asc) {title, date, description, registrationLink, membersOnly}'
+      '*[_type == "event" && published == true] | order(date asc) {title, date, startTime, endTime, location, description, registrationLink, membersOnly}'
   });
 }
 

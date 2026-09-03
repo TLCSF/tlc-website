@@ -4,7 +4,7 @@ import { Hero } from "@/components/hero";
 import { ImageFeature } from "@/components/image-feature";
 import { Section } from "@/components/section";
 import { sampleEvents } from "@/lib/content";
-import { getPublishedEvents } from "@/lib/cms";
+import { getPublishedEvents, type CmsEvent } from "@/lib/cms";
 
 export const metadata: Metadata = {
   title: "Gatherings & Events",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function EventsPage() {
   const cmsEvents = await getPublishedEvents();
-  const events = cmsEvents?.length ? cmsEvents : sampleEvents;
+  const events: CmsEvent[] = cmsEvents?.length ? cmsEvents : sampleEvents;
   const gatheringTypes = [
     {
       title: "Introductory gatherings",
@@ -71,9 +71,39 @@ export default async function EventsPage() {
                 {event.date || "Date to be announced"}
               </p>
               <h2 className="font-ui mt-3 text-2xl font-semibold">{event.title}</h2>
+              {event.startTime || event.endTime || event.location ? (
+                <dl className="mt-3 space-y-1 text-sm text-ink/70">
+                  {event.startTime || event.endTime ? (
+                    <div className="flex gap-2">
+                      <dt className="font-semibold text-ink">Time:</dt>
+                      <dd>
+                        {[event.startTime, event.endTime]
+                          .filter(Boolean)
+                          .join(" – ")}
+                      </dd>
+                    </div>
+                  ) : null}
+                  {event.location ? (
+                    <div className="flex gap-2">
+                      <dt className="font-semibold text-ink">Location:</dt>
+                      <dd>{event.location}</dd>
+                    </div>
+                  ) : null}
+                </dl>
+              ) : null}
               <p className="mt-3 whitespace-pre-line leading-7 text-ink/70">
                 {event.description}
               </p>
+              {event.registrationLink ? (
+                <a
+                  href={event.registrationLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md bg-gold px-5 py-2.5 font-ui text-sm font-semibold text-black transition hover:bg-gold/85"
+                >
+                  Register for event
+                </a>
+              ) : null}
             </article>
           ))}
         </div>
