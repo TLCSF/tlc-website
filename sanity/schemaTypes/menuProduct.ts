@@ -6,7 +6,7 @@ const displayCategories = [
   "Gummies",
   "Chocolate",
   "Tinctures",
-  "Microdose Capsules",
+  "Microdose",
   "Capsules",
   "Tablets",
   "Beverages",

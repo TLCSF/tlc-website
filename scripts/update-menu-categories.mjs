@@ -65,7 +65,7 @@ function classifyProduct(product) {
   }
 
   if (/\b(capsules?|caps\b|microdose|clarity caps|braveheart)\b/.test(text)) {
-    return "Microdose Capsules";
+    return "Microdose";
   }
 
   if (

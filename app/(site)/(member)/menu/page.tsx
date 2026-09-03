@@ -151,7 +151,7 @@ const categoryOrder = [
   "Gummies",
   "Chocolate",
   "Tinctures",
-  "Microdose Capsules",
+  "Microdose",
   "Capsules",
   "Tablets",
   "Beverages",
@@ -159,7 +159,8 @@ const categoryOrder = [
 ];
 
 const categoryAliases: Record<string, string> = {
-  "Capsules & Microdose": "Microdose Capsules",
+  "Capsules & Microdose": "Microdose",
+  "Microdose Capsules": "Microdose",
   "Gummies & Lozenges": "Gummies",
   "Beverages & Pantry": "Beverages",
   "Prepared Foods": "Miscellaneous",
