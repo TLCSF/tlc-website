@@ -71,7 +71,9 @@ export default async function EventsPage() {
                 {event.date || "Date to be announced"}
               </p>
               <h2 className="font-ui mt-3 text-2xl font-semibold">{event.title}</h2>
-              <p className="mt-3 leading-7 text-ink/70">{event.description}</p>
+              <p className="mt-3 whitespace-pre-line leading-7 text-ink/70">
+                {event.description}
+              </p>
             </article>
           ))}
         </div>
